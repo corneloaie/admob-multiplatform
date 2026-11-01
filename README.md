@@ -268,9 +268,10 @@ that platform's source set, for anything common code doesn't reach.
 ./gradlew :admob:publishToMavenLocal
 ```
 
-- **Simulator tests:** the test executable embeds an Info.plist with Google's sample app id. The tests request Google's
-  public test ad units. Where the network blocks ad domains, the requests time out, which still shows that the SDK
-  reported back through the library.
+- **Simulator tests:** the test executable embeds an Info.plist with Google's sample app id, and the tests request
+  Google's public test ad units. A test executable isn't an app, and the SDKs' requests from it fail even on an open
+  network, as on CI: UMP with a TLS error, the ad requests with `TIMEOUT`. The tests therefore check that every call
+  reports back through the library, with a fill or an error. A filled ad needs an app.
 - **SDK version switches:** after switching between the newest SDKs and the floor, or changing a version, start clean
   with `rm -rf .swiftpm-locks build admob/build`. SwiftPM keeps a locked version its range still allows, Gradle doesn't
   relink when only the resolved SDK changes, and stale Xcode dumps fail the build (KT-88106).

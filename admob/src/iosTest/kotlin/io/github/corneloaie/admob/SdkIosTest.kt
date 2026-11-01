@@ -11,8 +11,9 @@ import kotlin.test.assertTrue
 
 /**
  * Runs on a simulator against the real, SwiftPM-linked SDKs. The test executable embeds an Info.plist with Google's
- * sample app id. Ad requests go to Google's public test ad units: where the network blocks ad domains, they fail
- * (usually [AdErrorCode.TIMEOUT]), which still proves the SDK reported back through the library.
+ * sample app id, and the ad requests go to Google's public test ad units. A test executable isn't an app: its network
+ * requests fail even on an open network, as on CI (UMP with a TLS error, ads with [AdErrorCode.TIMEOUT]), so the
+ * tests check that each call reports back through the library, with a fill or an error.
  */
 class SdkIosTest {
     @AfterTest

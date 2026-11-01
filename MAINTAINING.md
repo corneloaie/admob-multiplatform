@@ -86,5 +86,6 @@ releases.
 ## Building on a laptop
 
 - **Requirements:** JDK 17 or 21, the Android SDK, and Xcode 26.2 or newer with the iOS platform.
-- **Network:** the iOS simulator tests request Google's public test ads. A DNS blocker (AdGuard, Pi-hole) makes those
-  requests time out, and the tests accept that. Pause the blocker to see a real fill.
+- **Network:** the iOS simulator tests request Google's public test ads. A test executable isn't an app, so the
+  requests fail there even on an open network: CI, with no DNS blocker, gets the same UMP TLS error and ad
+  `TIMEOUT`s as a Mac running AdGuard. The tests accept either outcome. Seeing a filled ad takes an app.
