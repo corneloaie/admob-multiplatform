@@ -26,7 +26,7 @@ public enum class AdErrorCode {
     /** The request didn't reach the server, or no answer came back. */
     NETWORK_ERROR,
 
-    /** The request timed out. Android's ad SDK reports [NETWORK_ERROR] instead. */
+    /** The request timed out. */
     TIMEOUT,
 
     /** The request was invalid: a wrong ad unit id, an invalid argument, or a consent message misconfigured in AdMob. */

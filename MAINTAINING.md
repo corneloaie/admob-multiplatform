@@ -101,3 +101,5 @@ releases.
 - **Network:** the iOS simulator tests request Google's public test ads. A test executable isn't an app, so the
   requests fail there even on an open network: CI, with no DNS blocker, gets the same UMP TLS error and ad
   `TIMEOUT`s as a Mac running AdGuard. The tests accept either outcome. Seeing a filled ad takes an app.
+- **Android device tests** (`connectedAndroidDeviceTest`) run in an app, which does reach Google: on an emulator behind
+  AdGuard the ad requests fail with `ERR_CONNECTION_REFUSED`, and a fill needs AdGuard paused.

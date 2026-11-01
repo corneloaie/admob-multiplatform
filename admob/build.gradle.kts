@@ -36,6 +36,8 @@ kotlin {
             jvmTarget.set(JvmTarget.JVM_17)
         }
         withHostTestBuilder { sourceSetTreeName = KotlinSourceSetTree.test.name }
+        // On a device or emulator, the Next-Gen SDK as it runs in an app: its start, and loads of Google's test ads.
+        withDeviceTestBuilder {}.configure { instrumentationRunner = "androidx.test.runner.AndroidJUnitRunner" }
     }
 
     listOf(iosArm64(), iosSimulatorArm64()).forEach { target ->
@@ -90,6 +92,11 @@ kotlin {
         commonTest.dependencies {
             implementation(kotlin("test"))
             implementation(libs.kotlinx.coroutines.test)
+        }
+        getByName("androidDeviceTest").dependencies {
+            implementation(kotlin("test"))
+            implementation(libs.androidx.test.runner)
+            implementation(libs.androidx.test.junit)
         }
     }
 }

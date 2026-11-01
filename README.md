@@ -288,12 +288,17 @@ that platform's source set, for anything common code doesn't reach.
 
 ```bash
 ./gradlew :admob:testAndroidHostTest                  # common and Android tests on the JVM
+ANDROID_SERIAL=emulator-5554 ./gradlew :admob:connectedAndroidDeviceTest   # the Next-Gen SDK on a device or emulator
 ./gradlew :admob:iosSimulatorArm64Test                # common and iOS tests on a simulator, against the real SDKs
 ./gradlew -Padmob.pinIosSdkFloor :admob:iosSimulatorArm64Test   # the same, against GoogleMobileAds 13.11.0 and UMP 3.1.0 exactly
 ./gradlew :admob:checkKotlinAbi                       # the public API against api/ (updateKotlinAbi rewrites it)
 ./gradlew :admob:publishToMavenLocal
 ```
 
+- **Device tests:** an app on a device or emulator, with Google's sample app id in its manifest, starts the Next-Gen
+  SDK and loads Google's test ad units; a load passes with a fill or an error. Unlike the iOS test executable, the app
+  reaches Google, so a network that blocks ad domains shows as `NETWORK_ERROR` (connection refused). They run on every
+  connected device unless `ANDROID_SERIAL` names one, and CI doesn't run them.
 - **Simulator tests:** the test executable embeds an Info.plist with Google's sample app id, and the tests request
   Google's public test ad units. A test executable isn't an app, and the SDKs' requests from it fail even on an open
   network, as on CI: UMP with a TLS error, the ad requests with `TIMEOUT`. The tests therefore check that every call
