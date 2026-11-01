@@ -45,7 +45,7 @@ jobs:
         if: github.event_name == 'release'
         run: |
           version=$(sed -n 's/^version=//p' gradle.properties)
-          if [ "${GITHUB_REF_NAME#v}" != "$version" ] || [ "$GITHUB_REF_NAME" != "v$version" ]; then
+          if [ "$GITHUB_REF_NAME" != "v$version" ]; then
             echo "::error::Release tag $GITHUB_REF_NAME is not v$version, the version in gradle.properties"
             exit 1
           fi

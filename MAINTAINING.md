@@ -22,8 +22,10 @@ the SwiftPM cinterop package (`swiftPMImport.io.github.corneloaie.admob`) that t
   still resolves one copy. The library must only call API that both floors have. The `floor` job of CI builds and tests
   with `-Padmob.pinIosSdkFloor`, which resolves exactly the floors, and fails on anything newer (UMP's `consentSyncID`
   is one such API, so it isn't offered). Raise a floor only together with the apps that pin it.
-- **Changing an iOS version:** run `rm -rf build/kotlin/swiftPMXcodeDumps` afterwards (KT-88106), locally and when
-  switching between the floor and the newest SDKs.
+- **Changing an iOS version, or switching between the floor and the newest SDKs:** start from a clean build. Run
+  `rm -rf .swiftpm-locks build admob/build`. SwiftPM keeps a version its lock file (`.swiftpm-locks`, not committed)
+  still allows. Gradle doesn't rerun cinterop or relink when only the resolved SDK changed. And a stale
+  `build/kotlin/swiftPMXcodeDumps` fails the build (KT-88106). CI always starts clean.
 - **Mapping SDK values:** map every SDK constant explicitly, on each platform. Android and iOS number some of them
   differently: consent status, AdChoices position, and the load error codes (no fill is 3 on Android, 1 on iOS).
 - **Publishing tooling:** the publish plugin (`publish` in the catalog) is only exercised by a Publish run. Bump it

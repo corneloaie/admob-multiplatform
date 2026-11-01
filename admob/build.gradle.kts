@@ -15,7 +15,7 @@ group = "io.github.corneloaie"
 val repositoryUrl = "https://github.com/corneloaie/admob-multiplatform"
 
 // -Padmob.pinIosSdkFloor resolves exactly the lowest GoogleMobileAds and UMP releases the library allows, to check that
-// it only calls API those have. Run `rm -rf build/kotlin/swiftPMXcodeDumps` when switching (KT-88106).
+// it only calls API those have. Start clean when switching: `rm -rf .swiftpm-locks build admob/build` (MAINTAINING.md).
 val pinIosSdkFloor = providers.gradleProperty("admob.pinIosSdkFloor").isPresent
 
 kotlin {

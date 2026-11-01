@@ -142,7 +142,8 @@ It updates as soon as `requestInfoUpdate` is called, not only when the request c
 saved in an earlier session right away. A returning user's ads therefore don't wait for the network.
 
 ```kotlin
-val canRequestAds: StateFlow<Boolean> = AdConsent.state.map { it.canRequestAds }.stateIn(scope, Eagerly, false)
+val canRequestAds: StateFlow<Boolean> =
+    AdConsent.state.map { it.canRequestAds }.stateIn(scope, SharingStarted.Eagerly, false)
 
 // A privacy settings entry, shown when the user must be able to change their choices:
 if (AdConsent.privacyOptionsRequirementStatus == PrivacyOptionsRequirementStatus.REQUIRED) {
@@ -267,8 +268,9 @@ that platform's source set, for anything common code doesn't reach.
 - **Simulator tests:** the test executable embeds an Info.plist with Google's sample app id. The tests request Google's
   public test ad units. Where the network blocks ad domains, the requests time out, which still shows that the SDK
   reported back through the library.
-- **SDK version switches:** after switching between the newest SDKs and the floor (or changing a version), run
-  `rm -rf build/kotlin/swiftPMXcodeDumps` (KT-88106).
+- **SDK version switches:** after switching between the newest SDKs and the floor, or changing a version, start clean
+  with `rm -rf .swiftpm-locks build admob/build`. SwiftPM keeps a locked version its range still allows, Gradle doesn't
+  relink when only the resolved SDK changes, and stale Xcode dumps fail the build (KT-88106).
 
 [MAINTAINING.md](MAINTAINING.md) covers releases.
 
