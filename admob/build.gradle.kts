@@ -94,6 +94,16 @@ kotlin {
     }
 }
 
+// Test output in the build log, as in firebase-multiplatform: the iOS tests print what the real SDKs answered (a fill,
+// or the error), which CI otherwise only keeps in the reports of a failed run.
+tasks.withType<AbstractTestTask>().configureEach {
+    testLogging {
+        events("passed", "skipped", "failed")
+        exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
+        showStandardStreams = true
+    }
+}
+
 mavenPublishing {
     publishToMavenCentral(automaticRelease = true)
     signAllPublications()
