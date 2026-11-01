@@ -12,7 +12,9 @@ Run after `./gradlew :admob:publishToMavenLocal` (the Publish workflow does). It
   - the root Gradle module has no swiftPMDependenciesMetadataElements variant, or the SwiftPM metadata it points to
     doesn't declare both Swift packages, GoogleMobileAds and UMP, as `from` the floors in gradle/libs.versions.toml.
     That variant is how an app inherits the iOS SDKs; an `exact` version means a -Padmob.pinIosSdkFloor build.
-  - an iOS artifact lacks its cinterop klib, which carries the Obj-C API (GADNativeAd, ...) the public API exposes.
+  - an iOS artifact lacks its cinterop klib, which carries the Obj-C API (GADNativeAd, ...) the public API exposes;
+  - the Android POM doesn't depend on the GMA Next-Gen SDK and UMP at the versions in gradle/libs.versions.toml, or
+    depends on the legacy play-services-ads, which clashes with the Next-Gen SDK.
 """
 import json
 import os
@@ -36,6 +38,12 @@ SWIFT_PACKAGES = {
     'https://github.com/googleads/swift-package-manager-google-user-messaging-platform.git':
         ('GoogleUserMessagingPlatform', 'google-ump-ios'),
 }
+# Maven module -> gradle/libs.versions.toml version key: the Android SDKs admob-android brings.
+ANDROID_SDKS = {
+    'com.google.android.libraries.ads.mobile.sdk:ads-mobile-sdk': 'ads-mobile-sdk',
+    'com.google.android.ump:user-messaging-platform': 'user-messaging-platform',
+}
+LEGACY_ANDROID_SDKS = ['com.google.android.gms:play-services-ads', 'com.google.android.gms:play-services-ads-lite']
 NS = {'m': 'http://maven.apache.org/POM/4.0.0'}
 
 
@@ -99,11 +107,30 @@ def check_swiftpm_metadata(module, directory, problems):
     return [f'{product} {found[url][0].lower()} {found[url][1]}' for url, (product, _) in SWIFT_PACKAGES.items() if url in found]
 
 
+def check_android_sdks(path, problems):
+    pom = ElementTree.parse(path).getroot()
+    dependencies = {
+        f"{d.findtext('m:groupId', namespaces=NS)}:{d.findtext('m:artifactId', namespaces=NS)}": d.findtext('m:version', namespaces=NS)
+        for d in pom.iterfind('.//m:dependencies/m:dependency', NS)
+    }
+    sdks = []
+    for module, key in ANDROID_SDKS.items():
+        expected = catalog_version(key)
+        if dependencies.get(module) != expected:
+            problems.append(f'{path.name}: {module} is {dependencies.get(module)!r}, expected {expected!r}')
+        sdks.append(f'{module.split(":")[1]} {dependencies.get(module)}')
+    for module in LEGACY_ANDROID_SDKS:
+        if module in dependencies:
+            problems.append(f'{path.name}: depends on the legacy {module}')
+    return sdks
+
+
 def main():
     repository = Path(sys.argv[1]).expanduser() / Path(*GROUP.split('.'))
     version = expected_version()
     problems = []
     packages = []
+    android_sdks = []
     files = 0
     for artifact in [ARTIFACT] + PLATFORM_ARTIFACTS:
         versions = sorted(v.name for v in (repository / artifact).iterdir() if v.is_dir()) if (repository / artifact).is_dir() else []
@@ -123,10 +150,15 @@ def main():
             module = check_module(directory / f'{prefix}.module', problems)
             if artifact == ARTIFACT:
                 packages = check_swiftpm_metadata(module, directory, problems)
+        if artifact == 'admob-android' and (directory / f'{prefix}.pom').is_file():
+            android_sdks = check_android_sdks(directory / f'{prefix}.pom', problems)
         if artifact in IOS_ARTIFACTS and not list(directory.glob(f'{prefix}-cinterop-*.klib')):
             problems.append(f'{artifact}: no cinterop klib')
 
-    print(f'{GROUP}:{ARTIFACT}:{version}, {1 + len(PLATFORM_ARTIFACTS)} artifacts, {files} files; Swift packages: {", ".join(packages) or "-"}')
+    print(
+        f'{GROUP}:{ARTIFACT}:{version}, {1 + len(PLATFORM_ARTIFACTS)} artifacts, {files} files; '
+        f'Android SDKs: {", ".join(android_sdks) or "-"}; Swift packages: {", ".join(packages) or "-"}'
+    )
     for problem in problems:
         print(f'::error::{problem}' if 'GITHUB_ACTIONS' in os.environ else f'error: {problem}')
     sys.exit(1 if problems else 0)

@@ -16,18 +16,30 @@ the SwiftPM cinterop package (`swiftPMImport.io.github.corneloaie.admob`) that t
 
 ## The SDK versions
 
-- **Android:** `play-services-ads` and `user-messaging-platform` are exact versions, which apps can raise.
+The library stays on the newest SDKs and calls nothing they deprecate: that is what it is for. When Google releases one,
+raise it in `gradle/libs.versions.toml`, build from clean, and replace whatever the build now warns is deprecated.
+
+- **Android:** the GMA Next-Gen SDK (`ads-mobile-sdk`) and `user-messaging-platform`, as exact versions apps can raise.
+  Google put `play-services-ads` in maintenance mode as "Legacy" in July 2026 (deprecated June 2027, sunset June 2028),
+  so the library doesn't use it. Mediation adapters still depend on it, which is why apps exclude it (README).
 - **iOS:** GoogleMobileAds and UMP are SwiftPM lower bounds (`from`): an app resolves the newest release of the same
-  major. The floors, 13.3.0 and 3.0.0, are what InfoTraffic pins in Xcode, so an app linking either package itself
-  still resolves one copy. The library must only call API that both floors have. The `floor` job of CI builds and tests
-  with `-Padmob.pinIosSdkFloor`, which resolves exactly the floors, and fails on anything newer (UMP's `consentSyncID`
-  is one such API, so it isn't offered). Raise a floor only together with the apps that pin it.
+  major. The bounds are the newest releases when the library is released (13.11.0 and 3.1.0 for 0.1.0); there is no
+  GMA Next-Gen SDK for iOS. The `floor` job of CI builds and tests with `-Padmob.pinIosSdkFloor`, which resolves exactly
+  the bounds, so the library keeps building against what it declares as newer releases come out. Raising a bound
+  raises it for every app: one that pins an older GoogleMobileAds exactly stops resolving.
+- **A new major** (GoogleMobileAds 14, UMP 4 on iOS, Next-Gen 2) is a new minor version of the library: `from` stops
+  below it, and the API may change.
 - **Changing an iOS version, or switching between the floor and the newest SDKs:** start from a clean build. Run
   `rm -rf .swiftpm-locks build admob/build`. SwiftPM keeps a version its lock file (`.swiftpm-locks`, not committed)
   still allows. Gradle doesn't rerun cinterop or relink when only the resolved SDK changed. And a stale
   `build/kotlin/swiftPMXcodeDumps` fails the build (KT-88106). CI always starts clean.
 - **Mapping SDK values:** map every SDK constant explicitly, on each platform. Android and iOS number some of them
-  differently: consent status, AdChoices position, and the load error codes (no fill is 3 on Android, 1 on iOS).
+  differently: consent status, AdChoices position, and the load error codes (no fill is 3 on Android, 1 on iOS). A
+  `when` over an SDK enum keeps an `else` branch, since an app can link a newer SDK with more constants.
+- **Threads:** the Next-Gen SDK calls back on background threads. The Android code posts every callback to the main
+  thread (`postToMainThread`), where the library's state lives.
+- **Deprecations:** a build shows no deprecation warning. The one `@Suppress("DEPRECATION")` is Android's
+  `PackageManager.getApplicationInfo` below Android 13, which has no replacement there.
 - **Publishing tooling:** the publish plugin (`publish` in the catalog) is only exercised by a Publish run. Bump it
   only with a dry run on its branch: `gh workflow run publish.yml --ref <branch>`.
 

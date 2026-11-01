@@ -2,7 +2,6 @@ package io.github.corneloaie.admob
 
 import platform.Foundation.NSDecimalNumber
 import platform.Foundation.NSError
-import platform.Foundation.NSNumber
 import swiftPMImport.io.github.corneloaie.admob.GADAdChoicesPosition
 import swiftPMImport.io.github.corneloaie.admob.GADAdLoaderOptions
 import swiftPMImport.io.github.corneloaie.admob.GADAdNetworkResponseInfo
@@ -13,8 +12,12 @@ import swiftPMImport.io.github.corneloaie.admob.GADAdValuePrecisionPrecise
 import swiftPMImport.io.github.corneloaie.admob.GADAdValuePrecisionPublisherProvided
 import swiftPMImport.io.github.corneloaie.admob.GADAdapterInitializationStateReady
 import swiftPMImport.io.github.corneloaie.admob.GADAdapterStatus
+import swiftPMImport.io.github.corneloaie.admob.GADAgeRestrictedTreatmentChild
+import swiftPMImport.io.github.corneloaie.admob.GADAgeRestrictedTreatmentTeen
+import swiftPMImport.io.github.corneloaie.admob.GADAgeRestrictedTreatmentUnspecified
 import swiftPMImport.io.github.corneloaie.admob.GADErrorAdAlreadyUsed
 import swiftPMImport.io.github.corneloaie.admob.GADErrorApplicationIdentifierMissing
+import swiftPMImport.io.github.corneloaie.admob.GADErrorDomain
 import swiftPMImport.io.github.corneloaie.admob.GADErrorInternalError
 import swiftPMImport.io.github.corneloaie.admob.GADErrorInvalidArgument
 import swiftPMImport.io.github.corneloaie.admob.GADErrorInvalidRequest
@@ -72,12 +75,13 @@ import swiftPMImport.io.github.corneloaie.admob.UMPRequestParameters
 
 // Every SDK value is mapped by its SDK constant, never by its number: Android and iOS number some of them differently.
 
-// The child-directed and under-age tags are deprecated in favor of ageRestrictedTreatment, but still apply.
-@Suppress("DEPRECATION")
 internal fun GADRequestConfiguration.toCommon(): RequestConfiguration = RequestConfiguration(
     testDeviceIds = testDeviceIdentifiers.orEmpty().filterIsInstance<String>(),
-    tagForChildDirectedTreatment = tagForChildDirectedTreatment?.boolValue,
-    tagForUnderAgeOfConsent = tagForUnderAgeOfConsent?.boolValue,
+    ageRestrictedTreatment = when (ageRestrictedTreatment) {
+        GADAgeRestrictedTreatmentChild -> AgeRestrictedTreatment.CHILD
+        GADAgeRestrictedTreatmentTeen -> AgeRestrictedTreatment.TEEN
+        else -> null
+    },
     maxAdContentRating = when (maxAdContentRating) {
         GADMaxAdContentRatingGeneral -> MaxAdContentRating.G
         GADMaxAdContentRatingParentalGuidance -> MaxAdContentRating.PG
@@ -87,11 +91,13 @@ internal fun GADRequestConfiguration.toCommon(): RequestConfiguration = RequestC
     },
 )
 
-@Suppress("DEPRECATION")
 internal fun GADRequestConfiguration.update(configuration: RequestConfiguration) {
     testDeviceIdentifiers = configuration.testDeviceIds
-    tagForChildDirectedTreatment = configuration.tagForChildDirectedTreatment?.let { NSNumber(bool = it) }
-    tagForUnderAgeOfConsent = configuration.tagForUnderAgeOfConsent?.let { NSNumber(bool = it) }
+    ageRestrictedTreatment = when (configuration.ageRestrictedTreatment) {
+        AgeRestrictedTreatment.CHILD -> GADAgeRestrictedTreatmentChild
+        AgeRestrictedTreatment.TEEN -> GADAgeRestrictedTreatmentTeen
+        null -> GADAgeRestrictedTreatmentUnspecified
+    }
     maxAdContentRating = when (configuration.maxAdContentRating) {
         MaxAdContentRating.G -> GADMaxAdContentRatingGeneral
         MaxAdContentRating.PG -> GADMaxAdContentRatingParentalGuidance
@@ -128,6 +134,9 @@ internal fun NSError.toAdError(source: AdErrorSource): AdError = AdError(
     message = localizedDescription,
     responseInfo = (userInfo[GADErrorUserInfoKeyResponseInfo] as? GADResponseInfo)?.toCommon(),
 )
+
+/** Which call reported an error: the iOS SDKs reuse numbers across calls, so its [AdErrorCode] depends on it. */
+internal enum class AdErrorSource { LOAD, SHOW, CONSENT, INSPECTOR, ADAPTER }
 
 /**
  * The iOS SDKs' error codes, by the call that reported them: loading and presenting share GADErrorDomain, and 21 is an
@@ -166,6 +175,8 @@ internal fun adErrorCodeOf(source: AdErrorSource, code: Long): AdErrorCode = whe
     }
     // The iOS SDK documents no Ad Inspector error codes.
     AdErrorSource.INSPECTOR -> AdErrorCode.UNKNOWN
+    // A mediation adapter numbers its errors itself.
+    AdErrorSource.ADAPTER -> AdErrorCode.MEDIATION_ERROR
 }
 
 internal fun GADResponseInfo.toCommon(): ResponseInfo = ResponseInfo(
@@ -182,7 +193,9 @@ private fun GADAdNetworkResponseInfo.toCommon() = AdapterResponseInfo(
     adSourceInstanceName = adSourceInstanceName.orNullIfEmpty(),
     adSourceInstanceId = adSourceInstanceID.orNullIfEmpty(),
     latencyMillis = (latency * MILLIS_PER_SECOND).toLong(),
-    error = error?.toAdError(AdErrorSource.LOAD),
+    error = error?.let { sourceError ->
+        sourceError.toAdError(if (sourceError.domain == GADErrorDomain) AdErrorSource.LOAD else AdErrorSource.ADAPTER)
+    },
 )
 
 internal fun GADAdValue.toCommon(): AdValue = AdValue(
@@ -213,6 +226,7 @@ internal fun privacyOptionsRequirementStatusOf(status: Long): PrivacyOptionsRequ
 
 internal fun ConsentRequestParameters.toIos(): UMPRequestParameters = UMPRequestParameters().also { parameters ->
     parameters.tagForUnderAgeOfConsent = tagForUnderAgeOfConsent
+    parameters.consentSyncID = consentSyncId
     parameters.debugSettings = debugSettings?.toIos()
 }
 

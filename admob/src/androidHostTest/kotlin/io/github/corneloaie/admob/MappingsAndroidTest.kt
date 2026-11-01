@@ -1,18 +1,22 @@
 package io.github.corneloaie.admob
 
-import com.google.android.gms.ads.AdValue
-import com.google.android.gms.ads.FullScreenContentCallback
-import com.google.android.gms.ads.LoadAdError
-import com.google.android.gms.ads.nativead.NativeAdOptions
+import com.google.android.libraries.ads.mobile.sdk.common.AdInspectorError
+import com.google.android.libraries.ads.mobile.sdk.common.FullScreenContentError
+import com.google.android.libraries.ads.mobile.sdk.common.LoadAdError
+import com.google.android.libraries.ads.mobile.sdk.common.MediationAdError
+import com.google.android.libraries.ads.mobile.sdk.common.PrecisionType
 import com.google.android.ump.ConsentDebugSettings
 import com.google.android.ump.ConsentInformation
 import com.google.android.ump.FormError
 import kotlin.test.Test
 import kotlin.test.assertEquals
-import com.google.android.gms.ads.AdRequest as GmaAdRequest
-import com.google.android.gms.ads.RequestConfiguration as GmaRequestConfiguration
+import kotlin.test.assertTrue
+import com.google.android.libraries.ads.mobile.sdk.common.AdChoicesPlacement as GmaAdChoicesPlacement
+import com.google.android.libraries.ads.mobile.sdk.common.AgeRestrictedTreatment as GmaAgeRestrictedTreatment
+import com.google.android.libraries.ads.mobile.sdk.common.RequestConfiguration as GmaRequestConfiguration
+import com.google.android.libraries.ads.mobile.sdk.nativead.NativeAd as GmaNativeAd
 
-/** The Android numbering, which differs from iOS's: these would break if a mapping went by number. */
+/** The Android SDKs' constants, which differ from iOS's: these would break if a mapping went by number. */
 class MappingsAndroidTest {
     @Test
     fun consentStatusFollowsTheAndroidNumbering() {
@@ -30,23 +34,40 @@ class MappingsAndroidTest {
 
     @Test
     fun errorCodesFollowTheCallThatReportedThem() {
-        assertEquals(3, GmaAdRequest.ERROR_CODE_NO_FILL)
-        assertEquals(AdErrorCode.NO_FILL, adErrorCodeOf(AdErrorSource.LOAD, GmaAdRequest.ERROR_CODE_NO_FILL))
-        assertEquals(AdErrorCode.NO_FILL, adErrorCodeOf(AdErrorSource.LOAD, GmaAdRequest.ERROR_CODE_MEDIATION_NO_FILL))
-        // 1 is an invalid request to a load and a reused ad to a show.
-        assertEquals(AdErrorCode.INVALID_REQUEST, adErrorCodeOf(AdErrorSource.LOAD, 1))
-        assertEquals(AdErrorCode.ALREADY_USED, adErrorCodeOf(AdErrorSource.SHOW, FullScreenContentCallback.ERROR_CODE_AD_REUSED))
-        assertEquals(AdErrorCode.NETWORK_ERROR, adErrorCodeOf(AdErrorSource.CONSENT, FormError.ErrorCode.INTERNET_ERROR))
-        assertEquals(AdErrorCode.UNKNOWN, adErrorCodeOf(AdErrorSource.LOAD, 999))
+        assertEquals(AdErrorCode.NO_FILL, LoadAdError.ErrorCode.NO_FILL.toCommon())
+        assertEquals(AdErrorCode.INVALID_REQUEST, LoadAdError.ErrorCode.NOT_FOUND.toCommon())
+        assertEquals(AdErrorCode.UNKNOWN, LoadAdError.ErrorCode.CANCELLED.toCommon())
+        assertEquals(AdErrorCode.ALREADY_USED, FullScreenContentError.ErrorCode.AD_REUSED.toCommon())
+        assertEquals(AdErrorCode.NOT_READY, FullScreenContentError.ErrorCode.APP_NOT_FOREGROUND.toCommon())
+        assertEquals(AdErrorCode.NOT_IN_TEST_MODE, AdInspectorError.ErrorCode.NOT_IN_TEST_MODE.toCommon())
+        assertEquals(AdErrorCode.NETWORK_ERROR, consentErrorCodeOf(FormError.ErrorCode.INTERNET_ERROR))
+        assertEquals(AdErrorCode.UNKNOWN, consentErrorCodeOf(999))
     }
 
     @Test
-    fun aLoadErrorKeepsTheSdkCodeAndDomain() {
-        val error = LoadAdError(GmaAdRequest.ERROR_CODE_NO_FILL, "No fill.", "com.google.android.gms.ads", null, null)
-
+    fun aLoadErrorKeepsTheSdkCode() {
+        // No fill is 3 on Android and 1 on iOS.
         assertEquals(
-            AdError(AdErrorCode.NO_FILL, platformCode = 3, domain = "com.google.android.gms.ads", message = "No fill."),
-            error.toAdError(),
+            AdError(
+                AdErrorCode.NO_FILL,
+                platformCode = 3,
+                domain = "com.google.android.libraries.ads.mobile.sdk",
+                message = "No fill.",
+            ),
+            LoadAdError(LoadAdError.ErrorCode.NO_FILL, "No fill.", null).toAdError(),
+        )
+    }
+
+    @Test
+    fun aMediationErrorIsTheSdksOrTheAdapters() {
+        assertEquals(
+            AdErrorCode.NO_FILL,
+            MediationAdError(3, "No fill.", MediationAdError.GOOGLE_MOBILE_ADS_DOMAIN).toAdError().code,
+        )
+        // An adapter numbers its errors itself: its 3 is no GMA no-fill.
+        assertEquals(
+            AdError(AdErrorCode.MEDIATION_ERROR, platformCode = 3, domain = "com.meta", message = "Bidding failed."),
+            MediationAdError(3, "Bidding failed.", "com.meta").toAdError(),
         )
     }
 
@@ -59,25 +80,31 @@ class MappingsAndroidTest {
     }
 
     @Test
-    fun requestConfigurationRoundTripsThroughTheSdkType() {
-        val configuration = RequestConfiguration(
+    fun requestConfigurationBuildsTheSdkType() {
+        val sdk = RequestConfiguration(
             testDeviceIds = listOf("TEST-DEVICE"),
-            tagForChildDirectedTreatment = true,
-            tagForUnderAgeOfConsent = false,
+            ageRestrictedTreatment = AgeRestrictedTreatment.TEEN,
             maxAdContentRating = MaxAdContentRating.T,
-        )
+        ).toAndroid()
 
-        assertEquals(configuration, configuration.toAndroid(GmaRequestConfiguration.Builder()).toCommon())
-        assertEquals(RequestConfiguration(), RequestConfiguration().toAndroid(GmaRequestConfiguration.Builder()).toCommon())
+        assertTrue("TEST-DEVICE" in sdk.testDeviceIds)
+        assertEquals(GmaAgeRestrictedTreatment.TEEN, sdk.ageRestrictedTreatment)
+        assertEquals(GmaRequestConfiguration.MaxAdContentRating.MAX_AD_CONTENT_RATING_T, sdk.maxAdContentRating)
+        val unset = RequestConfiguration().toAndroid()
+        assertEquals(GmaAgeRestrictedTreatment.UNSPECIFIED, unset.ageRestrictedTreatment)
+        assertEquals(GmaRequestConfiguration.MaxAdContentRating.MAX_AD_CONTENT_RATING_UNSPECIFIED, unset.maxAdContentRating)
+        assertEquals(
+            GmaAgeRestrictedTreatment.CHILD,
+            RequestConfiguration(ageRestrictedTreatment = AgeRestrictedTreatment.CHILD).toAndroid().ageRestrictedTreatment,
+        )
     }
 
     @Test
     fun optionsMapToTheAndroidConstants() {
-        // TopLeft is the first AdChoices position on Android, TopRight the first on iOS.
-        assertEquals(NativeAdOptions.ADCHOICES_TOP_LEFT, AdChoicesPlacement.TOP_LEFT.toAndroid())
-        assertEquals(NativeAdOptions.ADCHOICES_TOP_RIGHT, AdChoicesPlacement.TOP_RIGHT.toAndroid())
-        assertEquals(NativeAdOptions.NATIVE_MEDIA_ASPECT_RATIO_LANDSCAPE, MediaAspectRatio.LANDSCAPE.toAndroid())
+        assertEquals(GmaAdChoicesPlacement.TOP_LEFT, AdChoicesPlacement.TOP_LEFT.toAndroid())
+        assertEquals(GmaAdChoicesPlacement.TOP_RIGHT, AdChoicesPlacement.TOP_RIGHT.toAndroid())
+        assertEquals(GmaNativeAd.NativeMediaAspectRatio.LANDSCAPE, MediaAspectRatio.LANDSCAPE.toAndroid())
         assertEquals(ConsentDebugSettings.DebugGeography.DEBUG_GEOGRAPHY_EEA, DebugGeography.EEA.toAndroid())
-        assertEquals(AdValuePrecision.PRECISE, adValuePrecisionOf(AdValue.PrecisionType.PRECISE))
+        assertEquals(AdValuePrecision.PRECISE, PrecisionType.PRECISE.toCommon())
     }
 }

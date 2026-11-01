@@ -32,8 +32,7 @@ class SdkIosTest {
     fun requestConfigurationRoundTripsThroughTheSdk() {
         val configuration = RequestConfiguration(
             testDeviceIds = listOf("TEST-DEVICE"),
-            tagForChildDirectedTreatment = true,
-            tagForUnderAgeOfConsent = false,
+            ageRestrictedTreatment = AgeRestrictedTreatment.TEEN,
             maxAdContentRating = MaxAdContentRating.PG,
         )
         AdMob.requestConfiguration = configuration

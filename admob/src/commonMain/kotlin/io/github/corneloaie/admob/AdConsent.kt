@@ -110,10 +110,14 @@ public enum class PrivacyOptionsRequirementStatus {
  *
  * @property tagForUnderAgeOfConsent whether the user is under the age of consent. UMP then shows no form, and the ads
  *   are non-personalized.
+ * @property consentSyncId an id for the user, to share their consent choices between the apps that send the same id
+ *   (enable consent syncing for the apps in the Privacy & messaging settings). It's a UUID or 22 to 150 characters of
+ *   `[0-9a-zA-Z+.=/_\-$,{}]`; UMP ignores any other value, with a warning in the log.
  * @property debugSettings to test the consent flow: production builds leave it null.
  */
 public data class ConsentRequestParameters(
     val tagForUnderAgeOfConsent: Boolean = false,
+    val consentSyncId: String? = null,
     val debugSettings: ConsentDebugSettings? = null,
 )
 

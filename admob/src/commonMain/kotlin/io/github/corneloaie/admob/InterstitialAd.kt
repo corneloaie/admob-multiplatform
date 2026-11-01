@@ -4,7 +4,7 @@ import kotlinx.coroutines.flow.Flow
 
 /**
  * A loaded interstitial ad: a full-screen ad shown at a natural break. It shows once. Its platform ad is `android`
- * (`com.google.android.gms.ads.interstitial.InterstitialAd`) or `ios` (`GADInterstitialAd`).
+ * (`com.google.android.libraries.ads.mobile.sdk.interstitial.InterstitialAd`) or `ios` (`GADInterstitialAd`).
  */
 public expect class InterstitialAd {
     public val adUnitId: String

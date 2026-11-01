@@ -5,9 +5,10 @@ import kotlinx.coroutines.flow.Flow
 /**
  * A loaded native ad (see [NativeAdLoader]): its assets, its response and its events.
  *
- * The app renders it natively, with the platform ad: `android`, a `com.google.android.gms.ads.nativead.NativeAd`, goes
- * into a `NativeAdView`; `ios`, a `GADNativeAd`, into a `GADNativeAdView` (see `AttachRegisteringNativeAdView`). AdMob's
- * policies want the headline shown, and an "Ad" attribution.
+ * The app renders it natively, with the platform ad: `android`, a
+ * `com.google.android.libraries.ads.mobile.sdk.nativead.NativeAd`, goes into a `NativeAdView`; `ios`, a `GADNativeAd`,
+ * into a `GADNativeAdView` (see `AttachRegisteringNativeAdView`). AdMob's policies want the headline shown, and an "Ad"
+ * attribution.
  *
  * Call [destroy] once the ad is off screen for good.
  */

@@ -8,20 +8,22 @@ kotlinx-coroutines = "1.10.2"
 publish = "0.34.0"
 android-compileSdk = "36"
 android-minSdk = "24"
-# Google Mobile Ads (Android) and the Android UMP SDK — the versions InfoTraffic ships.
-play-services-ads = "25.5.0"
+# The GMA Next-Gen SDK, which replaced play-services-ads (in maintenance mode as "Legacy" since July 2026), and the
+# Android UMP SDK. Both are the newest releases; the Next-Gen SDK itself depends on UMP 4.0.0.
+ads-mobile-sdk = "1.6.0"
 user-messaging-platform = "4.0.0"
-# SwiftPM lower bounds (`from(...)`): each resolves to the newest release of the same major. They are the floors
-# InfoTraffic's Xcode project pins today (GoogleMobileAds 13.3.0, UMP 3.0.0), so an app linking either package
-# directly still resolves ONE copy. swift-package-manager-google-mobile-ads itself depends on UMP 1.1.0..<4.0.0.
-# The library only calls API both floors have: -Padmob.pinIosSdkFloor builds and tests against exactly these.
-google-mobile-ads-ios = "13.3.0"
-google-ump-ios = "3.0.0"
+# SwiftPM lower bounds (`from(...)`): each resolves to the newest release of the same major. They are the newest
+# releases, so the library is built against them and calls nothing deprecated in them; apps raise to them as they adopt
+# it (InfoTraffic's Xcode project asks for "up to next major" from 13.3.0 and 3.0.0, which both resolve).
+# swift-package-manager-google-mobile-ads itself depends on UMP 1.1.0..<4.0.0. -Padmob.pinIosSdkFloor builds and tests
+# against exactly these, which CI keeps doing as Google releases newer ones.
+google-mobile-ads-ios = "13.11.0"
+google-ump-ios = "3.1.0"
 # GoogleMobileAds 13 declares iOS 13; Kotlin/Native and the Firebase lib floor at 15.
 ios-deploymentTarget = "15.0"
 
 [libraries]
-play-services-ads = { module = "com.google.android.gms:play-services-ads", version.ref = "play-services-ads" }
+ads-mobile-sdk = { module = "com.google.android.libraries.ads.mobile.sdk:ads-mobile-sdk", version.ref = "ads-mobile-sdk" }
 user-messaging-platform = { module = "com.google.android.ump:user-messaging-platform", version.ref = "user-messaging-platform" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }

@@ -4,7 +4,7 @@ import kotlinx.coroutines.flow.Flow
 
 /**
  * A loaded rewarded ad: a full-screen ad the user chooses to watch for a reward. It shows once. Its platform ad is
- * `android` (`com.google.android.gms.ads.rewarded.RewardedAd`) or `ios` (`GADRewardedAd`).
+ * `android` (`com.google.android.libraries.ads.mobile.sdk.rewarded.RewardedAd`) or `ios` (`GADRewardedAd`).
  */
 public expect class RewardedAd {
     public val adUnitId: String

@@ -21,6 +21,9 @@ internal actual fun startPlatformSdk(onComplete: (InitializationStatus) -> Unit)
     }
 }
 
+// The iOS SDK starts by itself on the first request, and opens the Ad Inspector unstarted.
+internal actual suspend fun awaitStartedSdk() = Unit
+
 internal actual fun openPlatformAdInspector(host: AdHost, onClosed: (AdError?) -> Unit) {
     GADMobileAds.sharedInstance.presentAdInspectorFromViewController(host) { error ->
         onClosed(error?.toAdError(AdErrorSource.INSPECTOR))

@@ -2,11 +2,13 @@ package io.github.corneloaie.admob
 
 import swiftPMImport.io.github.corneloaie.admob.GADAdChoicesPosition
 import swiftPMImport.io.github.corneloaie.admob.GADAdValuePrecisionPrecise
+import swiftPMImport.io.github.corneloaie.admob.GADAgeRestrictedTreatmentChild
 import swiftPMImport.io.github.corneloaie.admob.GADErrorNoFill
 import swiftPMImport.io.github.corneloaie.admob.GADErrorReceivedInvalidAdString
 import swiftPMImport.io.github.corneloaie.admob.GADMediaAspectRatioLandscape
 import swiftPMImport.io.github.corneloaie.admob.GADPresentationErrorCodeAdAlreadyUsed
 import swiftPMImport.io.github.corneloaie.admob.GADPresentationErrorNotMainThread
+import swiftPMImport.io.github.corneloaie.admob.GADRequestConfiguration
 import swiftPMImport.io.github.corneloaie.admob.UMPConsentStatusNotRequired
 import swiftPMImport.io.github.corneloaie.admob.UMPConsentStatusObtained
 import swiftPMImport.io.github.corneloaie.admob.UMPConsentStatusRequired
@@ -45,6 +47,19 @@ class MappingsIosTest {
         assertEquals(AdErrorCode.NETWORK_ERROR, adErrorCodeOf(AdErrorSource.CONSENT, UMPRequestErrorCodeNetwork))
         assertEquals(AdErrorCode.TIMEOUT, adErrorCodeOf(AdErrorSource.CONSENT, UMPFormErrorCodeTimeout))
         assertEquals(AdErrorCode.UNKNOWN, adErrorCodeOf(AdErrorSource.LOAD, 999))
+        // An adapter's 1 is no GMA no-fill.
+        assertEquals(AdErrorCode.MEDIATION_ERROR, adErrorCodeOf(AdErrorSource.ADAPTER, GADErrorNoFill))
+    }
+
+    @Test
+    fun requestParametersCarryTheNewerSettings() {
+        val parameters = ConsentRequestParameters(consentSyncId = "4f0e7c4e-6a3b-4e1b-9a7d-2c5f8e9b1d3a").toIos()
+        assertEquals("4f0e7c4e-6a3b-4e1b-9a7d-2c5f8e9b1d3a", parameters.consentSyncID)
+
+        val configuration = GADRequestConfiguration()
+        configuration.update(RequestConfiguration(ageRestrictedTreatment = AgeRestrictedTreatment.CHILD))
+        assertEquals(GADAgeRestrictedTreatmentChild, configuration.ageRestrictedTreatment)
+        assertEquals(AgeRestrictedTreatment.CHILD, configuration.toCommon().ageRestrictedTreatment)
     }
 
     @Test

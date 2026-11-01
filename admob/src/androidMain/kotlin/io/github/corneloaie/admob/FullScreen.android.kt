@@ -1,22 +1,27 @@
 package io.github.corneloaie.admob
 
-import com.google.android.gms.ads.FullScreenContentCallback
-import com.google.android.gms.ads.OnPaidEventListener
-import com.google.android.gms.ads.AdError as GmaAdError
+import com.google.android.libraries.ads.mobile.sdk.common.FullScreenContentError
+import com.google.android.libraries.ads.mobile.sdk.interstitial.InterstitialAdEventCallback
+import com.google.android.libraries.ads.mobile.sdk.rewarded.RewardedAdEventCallback
+import com.google.android.libraries.ads.mobile.sdk.common.AdValue as GmaAdValue
 
-/** The SDK's full-screen callbacks for one ad, routed to [FullScreenAdSession]. Set at load time, before [show]. */
-internal fun FullScreenAdSession.contentCallback(): FullScreenContentCallback = object : FullScreenContentCallback() {
-    override fun onAdShowedFullScreenContent() = onShown()
+/**
+ * The SDK's events for one full-screen ad, routed to [session] on the main thread, where the session lives. Set at load
+ * time, before the app has the ad.
+ */
+internal class FullScreenEventCallback(private val session: FullScreenAdSession) :
+    InterstitialAdEventCallback,
+    RewardedAdEventCallback {
+    override fun onAdShowedFullScreenContent() = postToMainThread { session.onShown() }
 
-    override fun onAdImpression() = onImpression()
+    override fun onAdImpression() = postToMainThread { session.onImpression() }
 
-    override fun onAdClicked() = onClick()
+    override fun onAdClicked() = postToMainThread { session.onClick() }
 
-    override fun onAdDismissedFullScreenContent() = onDismissed()
+    override fun onAdPaid(value: GmaAdValue) = postToMainThread { session.onPaid(value.toCommon()) }
 
-    override fun onAdFailedToShowFullScreenContent(error: GmaAdError) =
-        onFailedToShow(error.toAdError(AdErrorSource.SHOW))
+    override fun onAdDismissedFullScreenContent() = postToMainThread { session.onDismissed() }
+
+    override fun onAdFailedToShowFullScreenContent(fullScreenContentError: FullScreenContentError) =
+        postToMainThread { session.onFailedToShow(fullScreenContentError.toAdError()) }
 }
-
-internal fun FullScreenAdSession.paidEventListener(): OnPaidEventListener =
-    OnPaidEventListener { value -> onPaid(value.toCommon()) }

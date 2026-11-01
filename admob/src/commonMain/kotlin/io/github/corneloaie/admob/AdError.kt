@@ -6,7 +6,8 @@ package io.github.corneloaie.admob
  * @property code what went wrong, the same on both platforms.
  * @property platformCode the SDK's own code. Android and iOS number their errors differently: a load with no fill is 3
  *   on Android and 1 on iOS. [domain] says which SDK it came from.
- * @property domain the SDK's error domain, e.g. `com.google.android.gms.ads` or `com.google.admob`.
+ * @property domain the SDK's error domain, e.g. `com.google.android.libraries.ads.mobile.sdk` or
+ *   `com.google.admob`.
  * @property responseInfo for a failed ad load, the response: which mediation sources were tried and how each failed.
  */
 public data class AdError(
@@ -58,6 +59,3 @@ public enum class AdErrorCode {
 
 /** Thrown by the suspending calls of this library when the SDK reports an [error]. */
 public class AdMobException(public val error: AdError) : Exception(error.message)
-
-/** Which call reported an error: the SDKs reuse numbers across calls, so its [AdErrorCode] depends on it. */
-internal enum class AdErrorSource { LOAD, SHOW, CONSENT, INSPECTOR }

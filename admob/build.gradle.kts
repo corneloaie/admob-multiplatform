@@ -83,7 +83,7 @@ kotlin {
             api(libs.kotlinx.coroutines.core)
         }
         androidMain.dependencies {
-            api(libs.play.services.ads)
+            api(libs.ads.mobile.sdk)
             api(libs.user.messaging.platform)
             implementation(libs.kotlinx.coroutines.android)
         }

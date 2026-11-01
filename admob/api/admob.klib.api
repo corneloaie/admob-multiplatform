@@ -63,6 +63,17 @@ final enum class io.github.corneloaie.admob/AdapterState : kotlin/Enum<io.github
     final fun values(): kotlin/Array<io.github.corneloaie.admob/AdapterState> // io.github.corneloaie.admob/AdapterState.values|values#static(){}[0]
 }
 
+final enum class io.github.corneloaie.admob/AgeRestrictedTreatment : kotlin/Enum<io.github.corneloaie.admob/AgeRestrictedTreatment> { // io.github.corneloaie.admob/AgeRestrictedTreatment|null[0]
+    enum entry CHILD // io.github.corneloaie.admob/AgeRestrictedTreatment.CHILD|null[0]
+    enum entry TEEN // io.github.corneloaie.admob/AgeRestrictedTreatment.TEEN|null[0]
+
+    final val entries // io.github.corneloaie.admob/AgeRestrictedTreatment.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<io.github.corneloaie.admob/AgeRestrictedTreatment> // io.github.corneloaie.admob/AgeRestrictedTreatment.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): io.github.corneloaie.admob/AgeRestrictedTreatment // io.github.corneloaie.admob/AgeRestrictedTreatment.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<io.github.corneloaie.admob/AgeRestrictedTreatment> // io.github.corneloaie.admob/AgeRestrictedTreatment.values|values#static(){}[0]
+}
+
 final enum class io.github.corneloaie.admob/ConsentStatus : kotlin/Enum<io.github.corneloaie.admob/ConsentStatus> { // io.github.corneloaie.admob/ConsentStatus|null[0]
     enum entry NOT_REQUIRED // io.github.corneloaie.admob/ConsentStatus.NOT_REQUIRED|null[0]
     enum entry OBTAINED // io.github.corneloaie.admob/ConsentStatus.OBTAINED|null[0]
@@ -343,16 +354,19 @@ final class io.github.corneloaie.admob/ConsentDebugSettings { // io.github.corne
 }
 
 final class io.github.corneloaie.admob/ConsentRequestParameters { // io.github.corneloaie.admob/ConsentRequestParameters|null[0]
-    constructor <init>(kotlin/Boolean = ..., io.github.corneloaie.admob/ConsentDebugSettings? = ...) // io.github.corneloaie.admob/ConsentRequestParameters.<init>|<init>(kotlin.Boolean;io.github.corneloaie.admob.ConsentDebugSettings?){}[0]
+    constructor <init>(kotlin/Boolean = ..., kotlin/String? = ..., io.github.corneloaie.admob/ConsentDebugSettings? = ...) // io.github.corneloaie.admob/ConsentRequestParameters.<init>|<init>(kotlin.Boolean;kotlin.String?;io.github.corneloaie.admob.ConsentDebugSettings?){}[0]
 
+    final val consentSyncId // io.github.corneloaie.admob/ConsentRequestParameters.consentSyncId|{}consentSyncId[0]
+        final fun <get-consentSyncId>(): kotlin/String? // io.github.corneloaie.admob/ConsentRequestParameters.consentSyncId.<get-consentSyncId>|<get-consentSyncId>(){}[0]
     final val debugSettings // io.github.corneloaie.admob/ConsentRequestParameters.debugSettings|{}debugSettings[0]
         final fun <get-debugSettings>(): io.github.corneloaie.admob/ConsentDebugSettings? // io.github.corneloaie.admob/ConsentRequestParameters.debugSettings.<get-debugSettings>|<get-debugSettings>(){}[0]
     final val tagForUnderAgeOfConsent // io.github.corneloaie.admob/ConsentRequestParameters.tagForUnderAgeOfConsent|{}tagForUnderAgeOfConsent[0]
         final fun <get-tagForUnderAgeOfConsent>(): kotlin/Boolean // io.github.corneloaie.admob/ConsentRequestParameters.tagForUnderAgeOfConsent.<get-tagForUnderAgeOfConsent>|<get-tagForUnderAgeOfConsent>(){}[0]
 
     final fun component1(): kotlin/Boolean // io.github.corneloaie.admob/ConsentRequestParameters.component1|component1(){}[0]
-    final fun component2(): io.github.corneloaie.admob/ConsentDebugSettings? // io.github.corneloaie.admob/ConsentRequestParameters.component2|component2(){}[0]
-    final fun copy(kotlin/Boolean = ..., io.github.corneloaie.admob/ConsentDebugSettings? = ...): io.github.corneloaie.admob/ConsentRequestParameters // io.github.corneloaie.admob/ConsentRequestParameters.copy|copy(kotlin.Boolean;io.github.corneloaie.admob.ConsentDebugSettings?){}[0]
+    final fun component2(): kotlin/String? // io.github.corneloaie.admob/ConsentRequestParameters.component2|component2(){}[0]
+    final fun component3(): io.github.corneloaie.admob/ConsentDebugSettings? // io.github.corneloaie.admob/ConsentRequestParameters.component3|component3(){}[0]
+    final fun copy(kotlin/Boolean = ..., kotlin/String? = ..., io.github.corneloaie.admob/ConsentDebugSettings? = ...): io.github.corneloaie.admob/ConsentRequestParameters // io.github.corneloaie.admob/ConsentRequestParameters.copy|copy(kotlin.Boolean;kotlin.String?;io.github.corneloaie.admob.ConsentDebugSettings?){}[0]
     final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.admob/ConsentRequestParameters.equals|equals(kotlin.Any?){}[0]
     final fun hashCode(): kotlin/Int // io.github.corneloaie.admob/ConsentRequestParameters.hashCode|hashCode(){}[0]
     final fun toString(): kotlin/String // io.github.corneloaie.admob/ConsentRequestParameters.toString|toString(){}[0]
@@ -506,22 +520,19 @@ final class io.github.corneloaie.admob/NativeAdOptions { // io.github.corneloaie
 }
 
 final class io.github.corneloaie.admob/RequestConfiguration { // io.github.corneloaie.admob/RequestConfiguration|null[0]
-    constructor <init>(kotlin.collections/List<kotlin/String> = ..., kotlin/Boolean? = ..., kotlin/Boolean? = ..., io.github.corneloaie.admob/MaxAdContentRating? = ...) // io.github.corneloaie.admob/RequestConfiguration.<init>|<init>(kotlin.collections.List<kotlin.String>;kotlin.Boolean?;kotlin.Boolean?;io.github.corneloaie.admob.MaxAdContentRating?){}[0]
+    constructor <init>(kotlin.collections/List<kotlin/String> = ..., io.github.corneloaie.admob/AgeRestrictedTreatment? = ..., io.github.corneloaie.admob/MaxAdContentRating? = ...) // io.github.corneloaie.admob/RequestConfiguration.<init>|<init>(kotlin.collections.List<kotlin.String>;io.github.corneloaie.admob.AgeRestrictedTreatment?;io.github.corneloaie.admob.MaxAdContentRating?){}[0]
 
+    final val ageRestrictedTreatment // io.github.corneloaie.admob/RequestConfiguration.ageRestrictedTreatment|{}ageRestrictedTreatment[0]
+        final fun <get-ageRestrictedTreatment>(): io.github.corneloaie.admob/AgeRestrictedTreatment? // io.github.corneloaie.admob/RequestConfiguration.ageRestrictedTreatment.<get-ageRestrictedTreatment>|<get-ageRestrictedTreatment>(){}[0]
     final val maxAdContentRating // io.github.corneloaie.admob/RequestConfiguration.maxAdContentRating|{}maxAdContentRating[0]
         final fun <get-maxAdContentRating>(): io.github.corneloaie.admob/MaxAdContentRating? // io.github.corneloaie.admob/RequestConfiguration.maxAdContentRating.<get-maxAdContentRating>|<get-maxAdContentRating>(){}[0]
-    final val tagForChildDirectedTreatment // io.github.corneloaie.admob/RequestConfiguration.tagForChildDirectedTreatment|{}tagForChildDirectedTreatment[0]
-        final fun <get-tagForChildDirectedTreatment>(): kotlin/Boolean? // io.github.corneloaie.admob/RequestConfiguration.tagForChildDirectedTreatment.<get-tagForChildDirectedTreatment>|<get-tagForChildDirectedTreatment>(){}[0]
-    final val tagForUnderAgeOfConsent // io.github.corneloaie.admob/RequestConfiguration.tagForUnderAgeOfConsent|{}tagForUnderAgeOfConsent[0]
-        final fun <get-tagForUnderAgeOfConsent>(): kotlin/Boolean? // io.github.corneloaie.admob/RequestConfiguration.tagForUnderAgeOfConsent.<get-tagForUnderAgeOfConsent>|<get-tagForUnderAgeOfConsent>(){}[0]
     final val testDeviceIds // io.github.corneloaie.admob/RequestConfiguration.testDeviceIds|{}testDeviceIds[0]
         final fun <get-testDeviceIds>(): kotlin.collections/List<kotlin/String> // io.github.corneloaie.admob/RequestConfiguration.testDeviceIds.<get-testDeviceIds>|<get-testDeviceIds>(){}[0]
 
     final fun component1(): kotlin.collections/List<kotlin/String> // io.github.corneloaie.admob/RequestConfiguration.component1|component1(){}[0]
-    final fun component2(): kotlin/Boolean? // io.github.corneloaie.admob/RequestConfiguration.component2|component2(){}[0]
-    final fun component3(): kotlin/Boolean? // io.github.corneloaie.admob/RequestConfiguration.component3|component3(){}[0]
-    final fun component4(): io.github.corneloaie.admob/MaxAdContentRating? // io.github.corneloaie.admob/RequestConfiguration.component4|component4(){}[0]
-    final fun copy(kotlin.collections/List<kotlin/String> = ..., kotlin/Boolean? = ..., kotlin/Boolean? = ..., io.github.corneloaie.admob/MaxAdContentRating? = ...): io.github.corneloaie.admob/RequestConfiguration // io.github.corneloaie.admob/RequestConfiguration.copy|copy(kotlin.collections.List<kotlin.String>;kotlin.Boolean?;kotlin.Boolean?;io.github.corneloaie.admob.MaxAdContentRating?){}[0]
+    final fun component2(): io.github.corneloaie.admob/AgeRestrictedTreatment? // io.github.corneloaie.admob/RequestConfiguration.component2|component2(){}[0]
+    final fun component3(): io.github.corneloaie.admob/MaxAdContentRating? // io.github.corneloaie.admob/RequestConfiguration.component3|component3(){}[0]
+    final fun copy(kotlin.collections/List<kotlin/String> = ..., io.github.corneloaie.admob/AgeRestrictedTreatment? = ..., io.github.corneloaie.admob/MaxAdContentRating? = ...): io.github.corneloaie.admob/RequestConfiguration // io.github.corneloaie.admob/RequestConfiguration.copy|copy(kotlin.collections.List<kotlin.String>;io.github.corneloaie.admob.AgeRestrictedTreatment?;io.github.corneloaie.admob.MaxAdContentRating?){}[0]
     final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.admob/RequestConfiguration.equals|equals(kotlin.Any?){}[0]
     final fun hashCode(): kotlin/Int // io.github.corneloaie.admob/RequestConfiguration.hashCode|hashCode(){}[0]
     final fun toString(): kotlin/String // io.github.corneloaie.admob/RequestConfiguration.toString|toString(){}[0]

@@ -5,12 +5,14 @@
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue?style=flat-square)](LICENSE)
 
 **Google Mobile Ads (AdMob) and the UMP consent SDK in Kotlin Multiplatform common code**, on Android and iOS. It is
-built on each platform's official SDK and calls it directly. On iOS that goes through Kotlin's SwiftPM import, the same
-mechanism as [firebase-multiplatform](https://github.com/corneloaie/firebase-multiplatform), so the app needs no Swift
-bridge.
+built on each platform's newest official SDK and calls it directly: the
+[GMA Next-Gen SDK](https://developers.google.com/admob/android/next-gen) on Android, which replaced `play-services-ads`,
+and GoogleMobileAds 13 on iOS. On iOS that goes through Kotlin's SwiftPM import, the same mechanism as
+[firebase-multiplatform](https://github.com/corneloaie/firebase-multiplatform), so the app needs no Swift bridge. The
+library calls no deprecated SDK API.
 
-- **Initialization:** start the SDK and wait for its adapters. Also the request configuration (test devices,
-  child-directed and under-age tags, max ad content rating), the SDK version and the Ad Inspector.
+- **Initialization:** start the SDK and wait for its adapters. Also the request configuration (test devices, age
+  treatment, max ad content rating), the SDK version and the Ad Inspector.
 - **Consent:** UMP's info update, consent form, privacy options form, `canRequestAds` and reset, with the state as a
   `StateFlow`.
 - **Native ads:** a loader with options. Each loaded ad has its assets, response info and an event `Flow` (impression,
@@ -44,9 +46,11 @@ that `androidMain` and `iosMain` depend on).
 
 ### Android
 
-- The minimum SDK is 24. The library brings `play-services-ads` 25.5.0 and `user-messaging-platform` 4.0.0 as `api`
-  dependencies.
-- Add the AdMob app id to the app's manifest. Without it, the Google Mobile Ads SDK crashes the app at startup:
+- The minimum SDK is 24. The library brings the GMA Next-Gen SDK
+  (`com.google.android.libraries.ads.mobile.sdk:ads-mobile-sdk` 1.6.0) and `user-messaging-platform` 4.0.0 as `api`
+  dependencies. The app must not depend on `play-services-ads` itself.
+- Add the AdMob app id to the app's manifest. UMP reads it there, and the library hands it to the Next-Gen SDK, which
+  takes it in code. Without it, `AdMob.initialize()` and the first ad load throw `IllegalStateException`:
 
   ```xml
   <application>
@@ -57,15 +61,29 @@ that `androidMain` and `iosMain` depend on).
   ```
 
 - A small `ContentProvider` in the library's manifest (`AdMobInitProvider`, not exported) keeps the application
-  `Context` at startup. Loading ads and reading the consent state therefore need no `Context`.
+  `Context` at startup. Starting the SDK and reading the consent state therefore need no `Context`.
+- **Mediation adapters** still depend on the legacy `play-services-ads`, which clashes with the Next-Gen SDK. As
+  [Google's mediation guides](https://developers.google.com/admob/android/next-gen/mediation/meta) say, exclude it from
+  every configuration of the app module:
+
+  ```kotlin
+  configurations.configureEach {
+      exclude(group = "com.google.android.gms", module = "play-services-ads")
+      exclude(group = "com.google.android.gms", module = "play-services-ads-lite")
+  }
+  ```
+
+  The Next-Gen SDK works with AdMob mediation, not under a third-party mediation platform.
+- The Next-Gen SDK calls back on background threads. The library moves every callback to the main thread, and its
+  suspending calls return there.
 
 ### iOS
 
 The library binds to the official
 [GoogleMobileAds](https://github.com/googleads/swift-package-manager-google-mobile-ads) and
 [UMP](https://github.com/googleads/swift-package-manager-google-user-messaging-platform) Swift packages without bundling
-them. Its Maven publication records both packages, and your app inherits them: GoogleMobileAds from 13.3.0 and UMP from
-3.0.0, each up to the next major version. You don't add either package to Xcode yourself.
+them. Its Maven publication records both packages, and your app inherits them: GoogleMobileAds from 13.11.0 and UMP
+from 3.1.0, each up to the next major version. You don't add either package to Xcode yourself.
 
 - **Requirements:** Kotlin 2.4 or newer and Xcode 26.2 or newer (the library is built and tested with Kotlin 2.4.21 and
   Xcode 26.6). The minimum deployment target is iOS 15.
@@ -85,10 +103,10 @@ them. Its Maven publication records both packages, and your app inherits them: G
   explain the mechanism.
 - **Info.plist:** add `GADApplicationIdentifier` (your AdMob app id) and the `SKAdNetworkItems` that Google lists in
   [its iOS quick start](https://developers.google.com/admob/ios/quick-start#update_your_infoplist).
-- **Mediation adapters, or GoogleMobileAds pinned in Xcode:** SwiftPM resolves one GoogleMobileAds for the whole app.
-  The library accepts any 13.x from 13.3.0 on, and its CI tests both 13.3.0 exactly and the newest 13.x. An app that
-  pins GoogleMobileAds 13.3.0 itself, for example for the Meta Audience Network adapter, leaves SwiftPM a version both
-  accept.
+- **Mediation adapters, or GoogleMobileAds in Xcode:** SwiftPM resolves one GoogleMobileAds for the whole app. The
+  library accepts any 13.x from 13.11.0 on, and its CI tests both 13.11.0 exactly and the newest 13.x. A requirement of
+  the app's own, such as "up to next major" from 13.3.0, or the Meta Audience Network adapter's `from: 13.4.0`, leaves
+  SwiftPM a version both accept; an exact pin below 13.11.0 doesn't.
 - **After the resolved SDK version changes,** for example when you upgrade this library, Kotlin 2.4.20 can fail with
   "module.modulemap has been modified since the module file ... was built"
   ([KT-88106](https://youtrack.jetbrains.com/issue/KT-88106)). Delete `build/kotlin/swiftPMXcodeDumps` in the root
@@ -131,7 +149,10 @@ suspend fun startAds(host: AdHost) {
         // Offline, for example. Consent given in an earlier session still counts: check canRequestAds.
     }
     if (AdConsent.canRequestAds) {
-        AdMob.requestConfiguration = RequestConfiguration(maxAdContentRating = MaxAdContentRating.PG)
+        AdMob.requestConfiguration = RequestConfiguration(
+            ageRestrictedTreatment = null, // or CHILD / TEEN: the age treatment for your users
+            maxAdContentRating = MaxAdContentRating.PG,
+        )
         val status = AdMob.initialize() // returns once the mediation adapters have started
     }
 }
@@ -150,6 +171,9 @@ if (AdConsent.privacyOptionsRequirementStatus == PrivacyOptionsRequirementStatus
     AdConsent.showPrivacyOptionsForm(host)
 }
 
+// Consent syncing: the same id in each of your apps shares the user's choices between them.
+AdConsent.requestInfoUpdate(host, ConsentRequestParameters(consentSyncId = userUuid))
+
 // Testing: appear in the EEA, and forget this device's answer.
 AdConsent.requestInfoUpdate(
     host,
@@ -159,7 +183,8 @@ AdConsent.reset()
 ```
 
 `AdMob.initialize()` starts the SDK once; later and concurrent calls wait for the same result. Set
-`AdMob.requestConfiguration` before it. To use the Ad Inspector, add the device to `testDeviceIds` and call
+`AdMob.requestConfiguration` before it. An ad load without it starts the SDK too, without waiting for the mediation
+adapters, so with mediation call it first. To use the Ad Inspector, add the device to `testDeviceIds` and call
 `AdMob.openAdInspector(host)`.
 
 ### Native ads
@@ -198,14 +223,15 @@ deciding when to load one stay in the app.
 
 **Rendering** stays native, with the platform ad.
 
-On Android, register `ad.android` (a `com.google.android.gms.ads.nativead.NativeAd`) with your `NativeAdView`:
+On Android, register `ad.android` (a `com.google.android.libraries.ads.mobile.sdk.nativead.NativeAd`) with the Next-Gen
+SDK's `NativeAdView`:
 
 ```kotlin
-// androidMain, e.g. in an AndroidView's update block; headline and mediaView are children of nativeAdView
+// androidMain, e.g. in an AndroidView's update block; headline and mediaView (the Next-Gen SDK's MediaView) are
+// children of nativeAdView
 nativeAdView.headlineView = headline
-nativeAdView.mediaView = mediaView
 headline.text = ad.headline
-nativeAdView.setNativeAd(ad.android)
+nativeAdView.registerNativeAd(ad.android, mediaView)
 ```
 
 On iOS, `ad.ios` is the `GADNativeAd`. The library adds three helpers for a card built in Kotlin:
@@ -263,7 +289,7 @@ that platform's source set, for anything common code doesn't reach.
 ```bash
 ./gradlew :admob:testAndroidHostTest                  # common and Android tests on the JVM
 ./gradlew :admob:iosSimulatorArm64Test                # common and iOS tests on a simulator, against the real SDKs
-./gradlew -Padmob.pinIosSdkFloor :admob:iosSimulatorArm64Test   # the same, against GoogleMobileAds 13.3.0 and UMP 3.0.0 exactly
+./gradlew -Padmob.pinIosSdkFloor :admob:iosSimulatorArm64Test   # the same, against GoogleMobileAds 13.11.0 and UMP 3.1.0 exactly
 ./gradlew :admob:checkKotlinAbi                       # the public API against api/ (updateKotlinAbi rewrites it)
 ./gradlew :admob:publishToMavenLocal
 ```
