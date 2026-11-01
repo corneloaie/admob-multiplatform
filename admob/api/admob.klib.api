@@ -1,0 +1,634 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <io.github.corneloaie:admob>
+final enum class io.github.corneloaie.admob/AdChoicesPlacement : kotlin/Enum<io.github.corneloaie.admob/AdChoicesPlacement> { // io.github.corneloaie.admob/AdChoicesPlacement|null[0]
+    enum entry BOTTOM_LEFT // io.github.corneloaie.admob/AdChoicesPlacement.BOTTOM_LEFT|null[0]
+    enum entry BOTTOM_RIGHT // io.github.corneloaie.admob/AdChoicesPlacement.BOTTOM_RIGHT|null[0]
+    enum entry TOP_LEFT // io.github.corneloaie.admob/AdChoicesPlacement.TOP_LEFT|null[0]
+    enum entry TOP_RIGHT // io.github.corneloaie.admob/AdChoicesPlacement.TOP_RIGHT|null[0]
+
+    final val entries // io.github.corneloaie.admob/AdChoicesPlacement.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<io.github.corneloaie.admob/AdChoicesPlacement> // io.github.corneloaie.admob/AdChoicesPlacement.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): io.github.corneloaie.admob/AdChoicesPlacement // io.github.corneloaie.admob/AdChoicesPlacement.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<io.github.corneloaie.admob/AdChoicesPlacement> // io.github.corneloaie.admob/AdChoicesPlacement.values|values#static(){}[0]
+}
+
+final enum class io.github.corneloaie.admob/AdErrorCode : kotlin/Enum<io.github.corneloaie.admob/AdErrorCode> { // io.github.corneloaie.admob/AdErrorCode|null[0]
+    enum entry ALREADY_USED // io.github.corneloaie.admob/AdErrorCode.ALREADY_USED|null[0]
+    enum entry APP_ID_MISSING // io.github.corneloaie.admob/AdErrorCode.APP_ID_MISSING|null[0]
+    enum entry INTERNAL_ERROR // io.github.corneloaie.admob/AdErrorCode.INTERNAL_ERROR|null[0]
+    enum entry INVALID_REQUEST // io.github.corneloaie.admob/AdErrorCode.INVALID_REQUEST|null[0]
+    enum entry MEDIATION_ERROR // io.github.corneloaie.admob/AdErrorCode.MEDIATION_ERROR|null[0]
+    enum entry NETWORK_ERROR // io.github.corneloaie.admob/AdErrorCode.NETWORK_ERROR|null[0]
+    enum entry NOT_IN_TEST_MODE // io.github.corneloaie.admob/AdErrorCode.NOT_IN_TEST_MODE|null[0]
+    enum entry NOT_READY // io.github.corneloaie.admob/AdErrorCode.NOT_READY|null[0]
+    enum entry NO_FILL // io.github.corneloaie.admob/AdErrorCode.NO_FILL|null[0]
+    enum entry TIMEOUT // io.github.corneloaie.admob/AdErrorCode.TIMEOUT|null[0]
+    enum entry UNKNOWN // io.github.corneloaie.admob/AdErrorCode.UNKNOWN|null[0]
+
+    final val entries // io.github.corneloaie.admob/AdErrorCode.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<io.github.corneloaie.admob/AdErrorCode> // io.github.corneloaie.admob/AdErrorCode.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): io.github.corneloaie.admob/AdErrorCode // io.github.corneloaie.admob/AdErrorCode.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<io.github.corneloaie.admob/AdErrorCode> // io.github.corneloaie.admob/AdErrorCode.values|values#static(){}[0]
+}
+
+final enum class io.github.corneloaie.admob/AdValuePrecision : kotlin/Enum<io.github.corneloaie.admob/AdValuePrecision> { // io.github.corneloaie.admob/AdValuePrecision|null[0]
+    enum entry ESTIMATED // io.github.corneloaie.admob/AdValuePrecision.ESTIMATED|null[0]
+    enum entry PRECISE // io.github.corneloaie.admob/AdValuePrecision.PRECISE|null[0]
+    enum entry PUBLISHER_PROVIDED // io.github.corneloaie.admob/AdValuePrecision.PUBLISHER_PROVIDED|null[0]
+    enum entry UNKNOWN // io.github.corneloaie.admob/AdValuePrecision.UNKNOWN|null[0]
+
+    final val entries // io.github.corneloaie.admob/AdValuePrecision.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<io.github.corneloaie.admob/AdValuePrecision> // io.github.corneloaie.admob/AdValuePrecision.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): io.github.corneloaie.admob/AdValuePrecision // io.github.corneloaie.admob/AdValuePrecision.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<io.github.corneloaie.admob/AdValuePrecision> // io.github.corneloaie.admob/AdValuePrecision.values|values#static(){}[0]
+}
+
+final enum class io.github.corneloaie.admob/AdapterState : kotlin/Enum<io.github.corneloaie.admob/AdapterState> { // io.github.corneloaie.admob/AdapterState|null[0]
+    enum entry NOT_READY // io.github.corneloaie.admob/AdapterState.NOT_READY|null[0]
+    enum entry READY // io.github.corneloaie.admob/AdapterState.READY|null[0]
+
+    final val entries // io.github.corneloaie.admob/AdapterState.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<io.github.corneloaie.admob/AdapterState> // io.github.corneloaie.admob/AdapterState.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): io.github.corneloaie.admob/AdapterState // io.github.corneloaie.admob/AdapterState.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<io.github.corneloaie.admob/AdapterState> // io.github.corneloaie.admob/AdapterState.values|values#static(){}[0]
+}
+
+final enum class io.github.corneloaie.admob/ConsentStatus : kotlin/Enum<io.github.corneloaie.admob/ConsentStatus> { // io.github.corneloaie.admob/ConsentStatus|null[0]
+    enum entry NOT_REQUIRED // io.github.corneloaie.admob/ConsentStatus.NOT_REQUIRED|null[0]
+    enum entry OBTAINED // io.github.corneloaie.admob/ConsentStatus.OBTAINED|null[0]
+    enum entry REQUIRED // io.github.corneloaie.admob/ConsentStatus.REQUIRED|null[0]
+    enum entry UNKNOWN // io.github.corneloaie.admob/ConsentStatus.UNKNOWN|null[0]
+
+    final val entries // io.github.corneloaie.admob/ConsentStatus.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<io.github.corneloaie.admob/ConsentStatus> // io.github.corneloaie.admob/ConsentStatus.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): io.github.corneloaie.admob/ConsentStatus // io.github.corneloaie.admob/ConsentStatus.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<io.github.corneloaie.admob/ConsentStatus> // io.github.corneloaie.admob/ConsentStatus.values|values#static(){}[0]
+}
+
+final enum class io.github.corneloaie.admob/DebugGeography : kotlin/Enum<io.github.corneloaie.admob/DebugGeography> { // io.github.corneloaie.admob/DebugGeography|null[0]
+    enum entry DISABLED // io.github.corneloaie.admob/DebugGeography.DISABLED|null[0]
+    enum entry EEA // io.github.corneloaie.admob/DebugGeography.EEA|null[0]
+    enum entry OTHER // io.github.corneloaie.admob/DebugGeography.OTHER|null[0]
+    enum entry REGULATED_US_STATE // io.github.corneloaie.admob/DebugGeography.REGULATED_US_STATE|null[0]
+
+    final val entries // io.github.corneloaie.admob/DebugGeography.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<io.github.corneloaie.admob/DebugGeography> // io.github.corneloaie.admob/DebugGeography.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): io.github.corneloaie.admob/DebugGeography // io.github.corneloaie.admob/DebugGeography.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<io.github.corneloaie.admob/DebugGeography> // io.github.corneloaie.admob/DebugGeography.values|values#static(){}[0]
+}
+
+final enum class io.github.corneloaie.admob/MaxAdContentRating : kotlin/Enum<io.github.corneloaie.admob/MaxAdContentRating> { // io.github.corneloaie.admob/MaxAdContentRating|null[0]
+    enum entry G // io.github.corneloaie.admob/MaxAdContentRating.G|null[0]
+    enum entry MA // io.github.corneloaie.admob/MaxAdContentRating.MA|null[0]
+    enum entry PG // io.github.corneloaie.admob/MaxAdContentRating.PG|null[0]
+    enum entry T // io.github.corneloaie.admob/MaxAdContentRating.T|null[0]
+
+    final val entries // io.github.corneloaie.admob/MaxAdContentRating.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<io.github.corneloaie.admob/MaxAdContentRating> // io.github.corneloaie.admob/MaxAdContentRating.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): io.github.corneloaie.admob/MaxAdContentRating // io.github.corneloaie.admob/MaxAdContentRating.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<io.github.corneloaie.admob/MaxAdContentRating> // io.github.corneloaie.admob/MaxAdContentRating.values|values#static(){}[0]
+}
+
+final enum class io.github.corneloaie.admob/MediaAspectRatio : kotlin/Enum<io.github.corneloaie.admob/MediaAspectRatio> { // io.github.corneloaie.admob/MediaAspectRatio|null[0]
+    enum entry ANY // io.github.corneloaie.admob/MediaAspectRatio.ANY|null[0]
+    enum entry LANDSCAPE // io.github.corneloaie.admob/MediaAspectRatio.LANDSCAPE|null[0]
+    enum entry PORTRAIT // io.github.corneloaie.admob/MediaAspectRatio.PORTRAIT|null[0]
+    enum entry SQUARE // io.github.corneloaie.admob/MediaAspectRatio.SQUARE|null[0]
+
+    final val entries // io.github.corneloaie.admob/MediaAspectRatio.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<io.github.corneloaie.admob/MediaAspectRatio> // io.github.corneloaie.admob/MediaAspectRatio.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): io.github.corneloaie.admob/MediaAspectRatio // io.github.corneloaie.admob/MediaAspectRatio.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<io.github.corneloaie.admob/MediaAspectRatio> // io.github.corneloaie.admob/MediaAspectRatio.values|values#static(){}[0]
+}
+
+final enum class io.github.corneloaie.admob/PrivacyOptionsRequirementStatus : kotlin/Enum<io.github.corneloaie.admob/PrivacyOptionsRequirementStatus> { // io.github.corneloaie.admob/PrivacyOptionsRequirementStatus|null[0]
+    enum entry NOT_REQUIRED // io.github.corneloaie.admob/PrivacyOptionsRequirementStatus.NOT_REQUIRED|null[0]
+    enum entry REQUIRED // io.github.corneloaie.admob/PrivacyOptionsRequirementStatus.REQUIRED|null[0]
+    enum entry UNKNOWN // io.github.corneloaie.admob/PrivacyOptionsRequirementStatus.UNKNOWN|null[0]
+
+    final val entries // io.github.corneloaie.admob/PrivacyOptionsRequirementStatus.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<io.github.corneloaie.admob/PrivacyOptionsRequirementStatus> // io.github.corneloaie.admob/PrivacyOptionsRequirementStatus.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): io.github.corneloaie.admob/PrivacyOptionsRequirementStatus // io.github.corneloaie.admob/PrivacyOptionsRequirementStatus.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<io.github.corneloaie.admob/PrivacyOptionsRequirementStatus> // io.github.corneloaie.admob/PrivacyOptionsRequirementStatus.values|values#static(){}[0]
+}
+
+sealed interface io.github.corneloaie.admob/AdEvent { // io.github.corneloaie.admob/AdEvent|null[0]
+    final class FailedToShow : io.github.corneloaie.admob/AdEvent { // io.github.corneloaie.admob/AdEvent.FailedToShow|null[0]
+        constructor <init>(io.github.corneloaie.admob/AdError) // io.github.corneloaie.admob/AdEvent.FailedToShow.<init>|<init>(io.github.corneloaie.admob.AdError){}[0]
+
+        final val error // io.github.corneloaie.admob/AdEvent.FailedToShow.error|{}error[0]
+            final fun <get-error>(): io.github.corneloaie.admob/AdError // io.github.corneloaie.admob/AdEvent.FailedToShow.error.<get-error>|<get-error>(){}[0]
+
+        final fun component1(): io.github.corneloaie.admob/AdError // io.github.corneloaie.admob/AdEvent.FailedToShow.component1|component1(){}[0]
+        final fun copy(io.github.corneloaie.admob/AdError = ...): io.github.corneloaie.admob/AdEvent.FailedToShow // io.github.corneloaie.admob/AdEvent.FailedToShow.copy|copy(io.github.corneloaie.admob.AdError){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.admob/AdEvent.FailedToShow.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // io.github.corneloaie.admob/AdEvent.FailedToShow.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // io.github.corneloaie.admob/AdEvent.FailedToShow.toString|toString(){}[0]
+    }
+
+    final class Paid : io.github.corneloaie.admob/AdEvent { // io.github.corneloaie.admob/AdEvent.Paid|null[0]
+        constructor <init>(io.github.corneloaie.admob/AdValue) // io.github.corneloaie.admob/AdEvent.Paid.<init>|<init>(io.github.corneloaie.admob.AdValue){}[0]
+
+        final val value // io.github.corneloaie.admob/AdEvent.Paid.value|{}value[0]
+            final fun <get-value>(): io.github.corneloaie.admob/AdValue // io.github.corneloaie.admob/AdEvent.Paid.value.<get-value>|<get-value>(){}[0]
+
+        final fun component1(): io.github.corneloaie.admob/AdValue // io.github.corneloaie.admob/AdEvent.Paid.component1|component1(){}[0]
+        final fun copy(io.github.corneloaie.admob/AdValue = ...): io.github.corneloaie.admob/AdEvent.Paid // io.github.corneloaie.admob/AdEvent.Paid.copy|copy(io.github.corneloaie.admob.AdValue){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.admob/AdEvent.Paid.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // io.github.corneloaie.admob/AdEvent.Paid.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // io.github.corneloaie.admob/AdEvent.Paid.toString|toString(){}[0]
+    }
+
+    final class RewardEarned : io.github.corneloaie.admob/AdEvent { // io.github.corneloaie.admob/AdEvent.RewardEarned|null[0]
+        constructor <init>(io.github.corneloaie.admob/RewardItem) // io.github.corneloaie.admob/AdEvent.RewardEarned.<init>|<init>(io.github.corneloaie.admob.RewardItem){}[0]
+
+        final val reward // io.github.corneloaie.admob/AdEvent.RewardEarned.reward|{}reward[0]
+            final fun <get-reward>(): io.github.corneloaie.admob/RewardItem // io.github.corneloaie.admob/AdEvent.RewardEarned.reward.<get-reward>|<get-reward>(){}[0]
+
+        final fun component1(): io.github.corneloaie.admob/RewardItem // io.github.corneloaie.admob/AdEvent.RewardEarned.component1|component1(){}[0]
+        final fun copy(io.github.corneloaie.admob/RewardItem = ...): io.github.corneloaie.admob/AdEvent.RewardEarned // io.github.corneloaie.admob/AdEvent.RewardEarned.copy|copy(io.github.corneloaie.admob.RewardItem){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.admob/AdEvent.RewardEarned.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // io.github.corneloaie.admob/AdEvent.RewardEarned.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // io.github.corneloaie.admob/AdEvent.RewardEarned.toString|toString(){}[0]
+    }
+
+    final object Click : io.github.corneloaie.admob/AdEvent { // io.github.corneloaie.admob/AdEvent.Click|null[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.admob/AdEvent.Click.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // io.github.corneloaie.admob/AdEvent.Click.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // io.github.corneloaie.admob/AdEvent.Click.toString|toString(){}[0]
+    }
+
+    final object Dismissed : io.github.corneloaie.admob/AdEvent { // io.github.corneloaie.admob/AdEvent.Dismissed|null[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.admob/AdEvent.Dismissed.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // io.github.corneloaie.admob/AdEvent.Dismissed.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // io.github.corneloaie.admob/AdEvent.Dismissed.toString|toString(){}[0]
+    }
+
+    final object Impression : io.github.corneloaie.admob/AdEvent { // io.github.corneloaie.admob/AdEvent.Impression|null[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.admob/AdEvent.Impression.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // io.github.corneloaie.admob/AdEvent.Impression.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // io.github.corneloaie.admob/AdEvent.Impression.toString|toString(){}[0]
+    }
+
+    final object Shown : io.github.corneloaie.admob/AdEvent { // io.github.corneloaie.admob/AdEvent.Shown|null[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.admob/AdEvent.Shown.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // io.github.corneloaie.admob/AdEvent.Shown.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // io.github.corneloaie.admob/AdEvent.Shown.toString|toString(){}[0]
+    }
+}
+
+final class io.github.corneloaie.admob/AdBadgeLabel : platform.UIKit/UILabel { // io.github.corneloaie.admob/AdBadgeLabel|null[0]
+    constructor <init>() // io.github.corneloaie.admob/AdBadgeLabel.<init>|<init>(){}[0]
+
+    final fun drawTextInRect(kotlinx.cinterop/CValue<platform.CoreGraphics/CGRect>) // io.github.corneloaie.admob/AdBadgeLabel.drawTextInRect|objc:drawTextInRect:[0]
+    final fun intrinsicContentSize(): kotlinx.cinterop/CValue<platform.CoreGraphics/CGSize> // io.github.corneloaie.admob/AdBadgeLabel.intrinsicContentSize|objc:intrinsicContentSize[0]
+}
+
+final class io.github.corneloaie.admob/AdError { // io.github.corneloaie.admob/AdError|null[0]
+    constructor <init>(io.github.corneloaie.admob/AdErrorCode, kotlin/Int, kotlin/String, kotlin/String, io.github.corneloaie.admob/ResponseInfo? = ...) // io.github.corneloaie.admob/AdError.<init>|<init>(io.github.corneloaie.admob.AdErrorCode;kotlin.Int;kotlin.String;kotlin.String;io.github.corneloaie.admob.ResponseInfo?){}[0]
+
+    final val code // io.github.corneloaie.admob/AdError.code|{}code[0]
+        final fun <get-code>(): io.github.corneloaie.admob/AdErrorCode // io.github.corneloaie.admob/AdError.code.<get-code>|<get-code>(){}[0]
+    final val domain // io.github.corneloaie.admob/AdError.domain|{}domain[0]
+        final fun <get-domain>(): kotlin/String // io.github.corneloaie.admob/AdError.domain.<get-domain>|<get-domain>(){}[0]
+    final val message // io.github.corneloaie.admob/AdError.message|{}message[0]
+        final fun <get-message>(): kotlin/String // io.github.corneloaie.admob/AdError.message.<get-message>|<get-message>(){}[0]
+    final val platformCode // io.github.corneloaie.admob/AdError.platformCode|{}platformCode[0]
+        final fun <get-platformCode>(): kotlin/Int // io.github.corneloaie.admob/AdError.platformCode.<get-platformCode>|<get-platformCode>(){}[0]
+    final val responseInfo // io.github.corneloaie.admob/AdError.responseInfo|{}responseInfo[0]
+        final fun <get-responseInfo>(): io.github.corneloaie.admob/ResponseInfo? // io.github.corneloaie.admob/AdError.responseInfo.<get-responseInfo>|<get-responseInfo>(){}[0]
+
+    final fun component1(): io.github.corneloaie.admob/AdErrorCode // io.github.corneloaie.admob/AdError.component1|component1(){}[0]
+    final fun component2(): kotlin/Int // io.github.corneloaie.admob/AdError.component2|component2(){}[0]
+    final fun component3(): kotlin/String // io.github.corneloaie.admob/AdError.component3|component3(){}[0]
+    final fun component4(): kotlin/String // io.github.corneloaie.admob/AdError.component4|component4(){}[0]
+    final fun component5(): io.github.corneloaie.admob/ResponseInfo? // io.github.corneloaie.admob/AdError.component5|component5(){}[0]
+    final fun copy(io.github.corneloaie.admob/AdErrorCode = ..., kotlin/Int = ..., kotlin/String = ..., kotlin/String = ..., io.github.corneloaie.admob/ResponseInfo? = ...): io.github.corneloaie.admob/AdError // io.github.corneloaie.admob/AdError.copy|copy(io.github.corneloaie.admob.AdErrorCode;kotlin.Int;kotlin.String;kotlin.String;io.github.corneloaie.admob.ResponseInfo?){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.admob/AdError.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // io.github.corneloaie.admob/AdError.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // io.github.corneloaie.admob/AdError.toString|toString(){}[0]
+}
+
+final class io.github.corneloaie.admob/AdMobException : kotlin/Exception { // io.github.corneloaie.admob/AdMobException|null[0]
+    constructor <init>(io.github.corneloaie.admob/AdError) // io.github.corneloaie.admob/AdMobException.<init>|<init>(io.github.corneloaie.admob.AdError){}[0]
+
+    final val error // io.github.corneloaie.admob/AdMobException.error|{}error[0]
+        final fun <get-error>(): io.github.corneloaie.admob/AdError // io.github.corneloaie.admob/AdMobException.error.<get-error>|<get-error>(){}[0]
+}
+
+final class io.github.corneloaie.admob/AdRequest { // io.github.corneloaie.admob/AdRequest|null[0]
+    constructor <init>(kotlin.collections/Set<kotlin/String> = ..., kotlin/String? = ..., kotlin.collections/List<kotlin/String> = ...) // io.github.corneloaie.admob/AdRequest.<init>|<init>(kotlin.collections.Set<kotlin.String>;kotlin.String?;kotlin.collections.List<kotlin.String>){}[0]
+
+    final val contentUrl // io.github.corneloaie.admob/AdRequest.contentUrl|{}contentUrl[0]
+        final fun <get-contentUrl>(): kotlin/String? // io.github.corneloaie.admob/AdRequest.contentUrl.<get-contentUrl>|<get-contentUrl>(){}[0]
+    final val keywords // io.github.corneloaie.admob/AdRequest.keywords|{}keywords[0]
+        final fun <get-keywords>(): kotlin.collections/Set<kotlin/String> // io.github.corneloaie.admob/AdRequest.keywords.<get-keywords>|<get-keywords>(){}[0]
+    final val neighboringContentUrls // io.github.corneloaie.admob/AdRequest.neighboringContentUrls|{}neighboringContentUrls[0]
+        final fun <get-neighboringContentUrls>(): kotlin.collections/List<kotlin/String> // io.github.corneloaie.admob/AdRequest.neighboringContentUrls.<get-neighboringContentUrls>|<get-neighboringContentUrls>(){}[0]
+
+    final fun component1(): kotlin.collections/Set<kotlin/String> // io.github.corneloaie.admob/AdRequest.component1|component1(){}[0]
+    final fun component2(): kotlin/String? // io.github.corneloaie.admob/AdRequest.component2|component2(){}[0]
+    final fun component3(): kotlin.collections/List<kotlin/String> // io.github.corneloaie.admob/AdRequest.component3|component3(){}[0]
+    final fun copy(kotlin.collections/Set<kotlin/String> = ..., kotlin/String? = ..., kotlin.collections/List<kotlin/String> = ...): io.github.corneloaie.admob/AdRequest // io.github.corneloaie.admob/AdRequest.copy|copy(kotlin.collections.Set<kotlin.String>;kotlin.String?;kotlin.collections.List<kotlin.String>){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.admob/AdRequest.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // io.github.corneloaie.admob/AdRequest.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // io.github.corneloaie.admob/AdRequest.toString|toString(){}[0]
+}
+
+final class io.github.corneloaie.admob/AdValue { // io.github.corneloaie.admob/AdValue|null[0]
+    constructor <init>(kotlin/Long, kotlin/String, io.github.corneloaie.admob/AdValuePrecision) // io.github.corneloaie.admob/AdValue.<init>|<init>(kotlin.Long;kotlin.String;io.github.corneloaie.admob.AdValuePrecision){}[0]
+
+    final val currencyCode // io.github.corneloaie.admob/AdValue.currencyCode|{}currencyCode[0]
+        final fun <get-currencyCode>(): kotlin/String // io.github.corneloaie.admob/AdValue.currencyCode.<get-currencyCode>|<get-currencyCode>(){}[0]
+    final val precision // io.github.corneloaie.admob/AdValue.precision|{}precision[0]
+        final fun <get-precision>(): io.github.corneloaie.admob/AdValuePrecision // io.github.corneloaie.admob/AdValue.precision.<get-precision>|<get-precision>(){}[0]
+    final val valueMicros // io.github.corneloaie.admob/AdValue.valueMicros|{}valueMicros[0]
+        final fun <get-valueMicros>(): kotlin/Long // io.github.corneloaie.admob/AdValue.valueMicros.<get-valueMicros>|<get-valueMicros>(){}[0]
+
+    final fun component1(): kotlin/Long // io.github.corneloaie.admob/AdValue.component1|component1(){}[0]
+    final fun component2(): kotlin/String // io.github.corneloaie.admob/AdValue.component2|component2(){}[0]
+    final fun component3(): io.github.corneloaie.admob/AdValuePrecision // io.github.corneloaie.admob/AdValue.component3|component3(){}[0]
+    final fun copy(kotlin/Long = ..., kotlin/String = ..., io.github.corneloaie.admob/AdValuePrecision = ...): io.github.corneloaie.admob/AdValue // io.github.corneloaie.admob/AdValue.copy|copy(kotlin.Long;kotlin.String;io.github.corneloaie.admob.AdValuePrecision){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.admob/AdValue.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // io.github.corneloaie.admob/AdValue.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // io.github.corneloaie.admob/AdValue.toString|toString(){}[0]
+}
+
+final class io.github.corneloaie.admob/AdapterResponseInfo { // io.github.corneloaie.admob/AdapterResponseInfo|null[0]
+    constructor <init>(kotlin/String, kotlin/String?, kotlin/String?, kotlin/String?, kotlin/String?, kotlin/Long, io.github.corneloaie.admob/AdError?) // io.github.corneloaie.admob/AdapterResponseInfo.<init>|<init>(kotlin.String;kotlin.String?;kotlin.String?;kotlin.String?;kotlin.String?;kotlin.Long;io.github.corneloaie.admob.AdError?){}[0]
+
+    final val adSourceId // io.github.corneloaie.admob/AdapterResponseInfo.adSourceId|{}adSourceId[0]
+        final fun <get-adSourceId>(): kotlin/String? // io.github.corneloaie.admob/AdapterResponseInfo.adSourceId.<get-adSourceId>|<get-adSourceId>(){}[0]
+    final val adSourceInstanceId // io.github.corneloaie.admob/AdapterResponseInfo.adSourceInstanceId|{}adSourceInstanceId[0]
+        final fun <get-adSourceInstanceId>(): kotlin/String? // io.github.corneloaie.admob/AdapterResponseInfo.adSourceInstanceId.<get-adSourceInstanceId>|<get-adSourceInstanceId>(){}[0]
+    final val adSourceInstanceName // io.github.corneloaie.admob/AdapterResponseInfo.adSourceInstanceName|{}adSourceInstanceName[0]
+        final fun <get-adSourceInstanceName>(): kotlin/String? // io.github.corneloaie.admob/AdapterResponseInfo.adSourceInstanceName.<get-adSourceInstanceName>|<get-adSourceInstanceName>(){}[0]
+    final val adSourceName // io.github.corneloaie.admob/AdapterResponseInfo.adSourceName|{}adSourceName[0]
+        final fun <get-adSourceName>(): kotlin/String? // io.github.corneloaie.admob/AdapterResponseInfo.adSourceName.<get-adSourceName>|<get-adSourceName>(){}[0]
+    final val adapterClassName // io.github.corneloaie.admob/AdapterResponseInfo.adapterClassName|{}adapterClassName[0]
+        final fun <get-adapterClassName>(): kotlin/String // io.github.corneloaie.admob/AdapterResponseInfo.adapterClassName.<get-adapterClassName>|<get-adapterClassName>(){}[0]
+    final val error // io.github.corneloaie.admob/AdapterResponseInfo.error|{}error[0]
+        final fun <get-error>(): io.github.corneloaie.admob/AdError? // io.github.corneloaie.admob/AdapterResponseInfo.error.<get-error>|<get-error>(){}[0]
+    final val latencyMillis // io.github.corneloaie.admob/AdapterResponseInfo.latencyMillis|{}latencyMillis[0]
+        final fun <get-latencyMillis>(): kotlin/Long // io.github.corneloaie.admob/AdapterResponseInfo.latencyMillis.<get-latencyMillis>|<get-latencyMillis>(){}[0]
+
+    final fun component1(): kotlin/String // io.github.corneloaie.admob/AdapterResponseInfo.component1|component1(){}[0]
+    final fun component2(): kotlin/String? // io.github.corneloaie.admob/AdapterResponseInfo.component2|component2(){}[0]
+    final fun component3(): kotlin/String? // io.github.corneloaie.admob/AdapterResponseInfo.component3|component3(){}[0]
+    final fun component4(): kotlin/String? // io.github.corneloaie.admob/AdapterResponseInfo.component4|component4(){}[0]
+    final fun component5(): kotlin/String? // io.github.corneloaie.admob/AdapterResponseInfo.component5|component5(){}[0]
+    final fun component6(): kotlin/Long // io.github.corneloaie.admob/AdapterResponseInfo.component6|component6(){}[0]
+    final fun component7(): io.github.corneloaie.admob/AdError? // io.github.corneloaie.admob/AdapterResponseInfo.component7|component7(){}[0]
+    final fun copy(kotlin/String = ..., kotlin/String? = ..., kotlin/String? = ..., kotlin/String? = ..., kotlin/String? = ..., kotlin/Long = ..., io.github.corneloaie.admob/AdError? = ...): io.github.corneloaie.admob/AdapterResponseInfo // io.github.corneloaie.admob/AdapterResponseInfo.copy|copy(kotlin.String;kotlin.String?;kotlin.String?;kotlin.String?;kotlin.String?;kotlin.Long;io.github.corneloaie.admob.AdError?){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.admob/AdapterResponseInfo.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // io.github.corneloaie.admob/AdapterResponseInfo.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // io.github.corneloaie.admob/AdapterResponseInfo.toString|toString(){}[0]
+}
+
+final class io.github.corneloaie.admob/AdapterStatus { // io.github.corneloaie.admob/AdapterStatus|null[0]
+    constructor <init>(io.github.corneloaie.admob/AdapterState, kotlin/String, kotlin/Long) // io.github.corneloaie.admob/AdapterStatus.<init>|<init>(io.github.corneloaie.admob.AdapterState;kotlin.String;kotlin.Long){}[0]
+
+    final val description // io.github.corneloaie.admob/AdapterStatus.description|{}description[0]
+        final fun <get-description>(): kotlin/String // io.github.corneloaie.admob/AdapterStatus.description.<get-description>|<get-description>(){}[0]
+    final val latencyMillis // io.github.corneloaie.admob/AdapterStatus.latencyMillis|{}latencyMillis[0]
+        final fun <get-latencyMillis>(): kotlin/Long // io.github.corneloaie.admob/AdapterStatus.latencyMillis.<get-latencyMillis>|<get-latencyMillis>(){}[0]
+    final val state // io.github.corneloaie.admob/AdapterStatus.state|{}state[0]
+        final fun <get-state>(): io.github.corneloaie.admob/AdapterState // io.github.corneloaie.admob/AdapterStatus.state.<get-state>|<get-state>(){}[0]
+
+    final fun component1(): io.github.corneloaie.admob/AdapterState // io.github.corneloaie.admob/AdapterStatus.component1|component1(){}[0]
+    final fun component2(): kotlin/String // io.github.corneloaie.admob/AdapterStatus.component2|component2(){}[0]
+    final fun component3(): kotlin/Long // io.github.corneloaie.admob/AdapterStatus.component3|component3(){}[0]
+    final fun copy(io.github.corneloaie.admob/AdapterState = ..., kotlin/String = ..., kotlin/Long = ...): io.github.corneloaie.admob/AdapterStatus // io.github.corneloaie.admob/AdapterStatus.copy|copy(io.github.corneloaie.admob.AdapterState;kotlin.String;kotlin.Long){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.admob/AdapterStatus.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // io.github.corneloaie.admob/AdapterStatus.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // io.github.corneloaie.admob/AdapterStatus.toString|toString(){}[0]
+}
+
+final class io.github.corneloaie.admob/AttachRegisteringNativeAdView : swiftPMImport.io.github.corneloaie.admob/GADNativeAdView { // io.github.corneloaie.admob/AttachRegisteringNativeAdView|null[0]
+    constructor <init>() // io.github.corneloaie.admob/AttachRegisteringNativeAdView.<init>|<init>(){}[0]
+
+    final fun didMoveToWindow() // io.github.corneloaie.admob/AttachRegisteringNativeAdView.didMoveToWindow|objc:didMoveToWindow[0]
+    final fun registerWhenAttached(io.github.corneloaie.admob/NativeAd) // io.github.corneloaie.admob/AttachRegisteringNativeAdView.registerWhenAttached|registerWhenAttached(ad:io.github.corneloaie.admob.NativeAd){}[0]
+}
+
+final class io.github.corneloaie.admob/ConsentDebugSettings { // io.github.corneloaie.admob/ConsentDebugSettings|null[0]
+    constructor <init>(io.github.corneloaie.admob/DebugGeography = ..., kotlin.collections/List<kotlin/String> = ...) // io.github.corneloaie.admob/ConsentDebugSettings.<init>|<init>(io.github.corneloaie.admob.DebugGeography;kotlin.collections.List<kotlin.String>){}[0]
+
+    final val geography // io.github.corneloaie.admob/ConsentDebugSettings.geography|{}geography[0]
+        final fun <get-geography>(): io.github.corneloaie.admob/DebugGeography // io.github.corneloaie.admob/ConsentDebugSettings.geography.<get-geography>|<get-geography>(){}[0]
+    final val testDeviceHashedIds // io.github.corneloaie.admob/ConsentDebugSettings.testDeviceHashedIds|{}testDeviceHashedIds[0]
+        final fun <get-testDeviceHashedIds>(): kotlin.collections/List<kotlin/String> // io.github.corneloaie.admob/ConsentDebugSettings.testDeviceHashedIds.<get-testDeviceHashedIds>|<get-testDeviceHashedIds>(){}[0]
+
+    final fun component1(): io.github.corneloaie.admob/DebugGeography // io.github.corneloaie.admob/ConsentDebugSettings.component1|component1(){}[0]
+    final fun component2(): kotlin.collections/List<kotlin/String> // io.github.corneloaie.admob/ConsentDebugSettings.component2|component2(){}[0]
+    final fun copy(io.github.corneloaie.admob/DebugGeography = ..., kotlin.collections/List<kotlin/String> = ...): io.github.corneloaie.admob/ConsentDebugSettings // io.github.corneloaie.admob/ConsentDebugSettings.copy|copy(io.github.corneloaie.admob.DebugGeography;kotlin.collections.List<kotlin.String>){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.admob/ConsentDebugSettings.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // io.github.corneloaie.admob/ConsentDebugSettings.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // io.github.corneloaie.admob/ConsentDebugSettings.toString|toString(){}[0]
+}
+
+final class io.github.corneloaie.admob/ConsentRequestParameters { // io.github.corneloaie.admob/ConsentRequestParameters|null[0]
+    constructor <init>(kotlin/Boolean = ..., io.github.corneloaie.admob/ConsentDebugSettings? = ...) // io.github.corneloaie.admob/ConsentRequestParameters.<init>|<init>(kotlin.Boolean;io.github.corneloaie.admob.ConsentDebugSettings?){}[0]
+
+    final val debugSettings // io.github.corneloaie.admob/ConsentRequestParameters.debugSettings|{}debugSettings[0]
+        final fun <get-debugSettings>(): io.github.corneloaie.admob/ConsentDebugSettings? // io.github.corneloaie.admob/ConsentRequestParameters.debugSettings.<get-debugSettings>|<get-debugSettings>(){}[0]
+    final val tagForUnderAgeOfConsent // io.github.corneloaie.admob/ConsentRequestParameters.tagForUnderAgeOfConsent|{}tagForUnderAgeOfConsent[0]
+        final fun <get-tagForUnderAgeOfConsent>(): kotlin/Boolean // io.github.corneloaie.admob/ConsentRequestParameters.tagForUnderAgeOfConsent.<get-tagForUnderAgeOfConsent>|<get-tagForUnderAgeOfConsent>(){}[0]
+
+    final fun component1(): kotlin/Boolean // io.github.corneloaie.admob/ConsentRequestParameters.component1|component1(){}[0]
+    final fun component2(): io.github.corneloaie.admob/ConsentDebugSettings? // io.github.corneloaie.admob/ConsentRequestParameters.component2|component2(){}[0]
+    final fun copy(kotlin/Boolean = ..., io.github.corneloaie.admob/ConsentDebugSettings? = ...): io.github.corneloaie.admob/ConsentRequestParameters // io.github.corneloaie.admob/ConsentRequestParameters.copy|copy(kotlin.Boolean;io.github.corneloaie.admob.ConsentDebugSettings?){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.admob/ConsentRequestParameters.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // io.github.corneloaie.admob/ConsentRequestParameters.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // io.github.corneloaie.admob/ConsentRequestParameters.toString|toString(){}[0]
+}
+
+final class io.github.corneloaie.admob/ConsentState { // io.github.corneloaie.admob/ConsentState|null[0]
+    constructor <init>(io.github.corneloaie.admob/ConsentStatus, kotlin/Boolean, io.github.corneloaie.admob/PrivacyOptionsRequirementStatus) // io.github.corneloaie.admob/ConsentState.<init>|<init>(io.github.corneloaie.admob.ConsentStatus;kotlin.Boolean;io.github.corneloaie.admob.PrivacyOptionsRequirementStatus){}[0]
+
+    final val canRequestAds // io.github.corneloaie.admob/ConsentState.canRequestAds|{}canRequestAds[0]
+        final fun <get-canRequestAds>(): kotlin/Boolean // io.github.corneloaie.admob/ConsentState.canRequestAds.<get-canRequestAds>|<get-canRequestAds>(){}[0]
+    final val consentStatus // io.github.corneloaie.admob/ConsentState.consentStatus|{}consentStatus[0]
+        final fun <get-consentStatus>(): io.github.corneloaie.admob/ConsentStatus // io.github.corneloaie.admob/ConsentState.consentStatus.<get-consentStatus>|<get-consentStatus>(){}[0]
+    final val privacyOptionsRequirementStatus // io.github.corneloaie.admob/ConsentState.privacyOptionsRequirementStatus|{}privacyOptionsRequirementStatus[0]
+        final fun <get-privacyOptionsRequirementStatus>(): io.github.corneloaie.admob/PrivacyOptionsRequirementStatus // io.github.corneloaie.admob/ConsentState.privacyOptionsRequirementStatus.<get-privacyOptionsRequirementStatus>|<get-privacyOptionsRequirementStatus>(){}[0]
+
+    final fun component1(): io.github.corneloaie.admob/ConsentStatus // io.github.corneloaie.admob/ConsentState.component1|component1(){}[0]
+    final fun component2(): kotlin/Boolean // io.github.corneloaie.admob/ConsentState.component2|component2(){}[0]
+    final fun component3(): io.github.corneloaie.admob/PrivacyOptionsRequirementStatus // io.github.corneloaie.admob/ConsentState.component3|component3(){}[0]
+    final fun copy(io.github.corneloaie.admob/ConsentStatus = ..., kotlin/Boolean = ..., io.github.corneloaie.admob/PrivacyOptionsRequirementStatus = ...): io.github.corneloaie.admob/ConsentState // io.github.corneloaie.admob/ConsentState.copy|copy(io.github.corneloaie.admob.ConsentStatus;kotlin.Boolean;io.github.corneloaie.admob.PrivacyOptionsRequirementStatus){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.admob/ConsentState.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // io.github.corneloaie.admob/ConsentState.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // io.github.corneloaie.admob/ConsentState.toString|toString(){}[0]
+}
+
+final class io.github.corneloaie.admob/InitializationStatus { // io.github.corneloaie.admob/InitializationStatus|null[0]
+    constructor <init>(kotlin.collections/Map<kotlin/String, io.github.corneloaie.admob/AdapterStatus>) // io.github.corneloaie.admob/InitializationStatus.<init>|<init>(kotlin.collections.Map<kotlin.String,io.github.corneloaie.admob.AdapterStatus>){}[0]
+
+    final val adapterStatuses // io.github.corneloaie.admob/InitializationStatus.adapterStatuses|{}adapterStatuses[0]
+        final fun <get-adapterStatuses>(): kotlin.collections/Map<kotlin/String, io.github.corneloaie.admob/AdapterStatus> // io.github.corneloaie.admob/InitializationStatus.adapterStatuses.<get-adapterStatuses>|<get-adapterStatuses>(){}[0]
+
+    final fun component1(): kotlin.collections/Map<kotlin/String, io.github.corneloaie.admob/AdapterStatus> // io.github.corneloaie.admob/InitializationStatus.component1|component1(){}[0]
+    final fun copy(kotlin.collections/Map<kotlin/String, io.github.corneloaie.admob/AdapterStatus> = ...): io.github.corneloaie.admob/InitializationStatus // io.github.corneloaie.admob/InitializationStatus.copy|copy(kotlin.collections.Map<kotlin.String,io.github.corneloaie.admob.AdapterStatus>){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.admob/InitializationStatus.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // io.github.corneloaie.admob/InitializationStatus.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // io.github.corneloaie.admob/InitializationStatus.toString|toString(){}[0]
+}
+
+final class io.github.corneloaie.admob/InterstitialAd { // io.github.corneloaie.admob/InterstitialAd|null[0]
+    final val adUnitId // io.github.corneloaie.admob/InterstitialAd.adUnitId|{}adUnitId[0]
+        final fun <get-adUnitId>(): kotlin/String // io.github.corneloaie.admob/InterstitialAd.adUnitId.<get-adUnitId>|<get-adUnitId>(){}[0]
+    final val events // io.github.corneloaie.admob/InterstitialAd.events|{}events[0]
+        final fun <get-events>(): kotlinx.coroutines.flow/Flow<io.github.corneloaie.admob/AdEvent> // io.github.corneloaie.admob/InterstitialAd.events.<get-events>|<get-events>(){}[0]
+    final val ios // io.github.corneloaie.admob/InterstitialAd.ios|{}ios[0]
+        final fun <get-ios>(): swiftPMImport.io.github.corneloaie.admob/GADInterstitialAd // io.github.corneloaie.admob/InterstitialAd.ios.<get-ios>|<get-ios>(){}[0]
+    final val responseInfo // io.github.corneloaie.admob/InterstitialAd.responseInfo|{}responseInfo[0]
+        final fun <get-responseInfo>(): io.github.corneloaie.admob/ResponseInfo? // io.github.corneloaie.admob/InterstitialAd.responseInfo.<get-responseInfo>|<get-responseInfo>(){}[0]
+
+    final suspend fun show(platform.UIKit/UIViewController) // io.github.corneloaie.admob/InterstitialAd.show|show(platform.UIKit.UIViewController){}[0]
+
+    final object Companion { // io.github.corneloaie.admob/InterstitialAd.Companion|null[0]
+        final suspend fun load(kotlin/String, io.github.corneloaie.admob/AdRequest = ...): io.github.corneloaie.admob/InterstitialAd // io.github.corneloaie.admob/InterstitialAd.Companion.load|load(kotlin.String;io.github.corneloaie.admob.AdRequest){}[0]
+    }
+}
+
+final class io.github.corneloaie.admob/NativeAd { // io.github.corneloaie.admob/NativeAd|null[0]
+    final val adUnitId // io.github.corneloaie.admob/NativeAd.adUnitId|{}adUnitId[0]
+        final fun <get-adUnitId>(): kotlin/String // io.github.corneloaie.admob/NativeAd.adUnitId.<get-adUnitId>|<get-adUnitId>(){}[0]
+    final val advertiser // io.github.corneloaie.admob/NativeAd.advertiser|{}advertiser[0]
+        final fun <get-advertiser>(): kotlin/String? // io.github.corneloaie.admob/NativeAd.advertiser.<get-advertiser>|<get-advertiser>(){}[0]
+    final val body // io.github.corneloaie.admob/NativeAd.body|{}body[0]
+        final fun <get-body>(): kotlin/String? // io.github.corneloaie.admob/NativeAd.body.<get-body>|<get-body>(){}[0]
+    final val callToAction // io.github.corneloaie.admob/NativeAd.callToAction|{}callToAction[0]
+        final fun <get-callToAction>(): kotlin/String? // io.github.corneloaie.admob/NativeAd.callToAction.<get-callToAction>|<get-callToAction>(){}[0]
+    final val events // io.github.corneloaie.admob/NativeAd.events|{}events[0]
+        final fun <get-events>(): kotlinx.coroutines.flow/Flow<io.github.corneloaie.admob/AdEvent> // io.github.corneloaie.admob/NativeAd.events.<get-events>|<get-events>(){}[0]
+    final val headline // io.github.corneloaie.admob/NativeAd.headline|{}headline[0]
+        final fun <get-headline>(): kotlin/String? // io.github.corneloaie.admob/NativeAd.headline.<get-headline>|<get-headline>(){}[0]
+    final val icon // io.github.corneloaie.admob/NativeAd.icon|{}icon[0]
+        final fun <get-icon>(): io.github.corneloaie.admob/NativeAdImage? // io.github.corneloaie.admob/NativeAd.icon.<get-icon>|<get-icon>(){}[0]
+    final val images // io.github.corneloaie.admob/NativeAd.images|{}images[0]
+        final fun <get-images>(): kotlin.collections/List<io.github.corneloaie.admob/NativeAdImage> // io.github.corneloaie.admob/NativeAd.images.<get-images>|<get-images>(){}[0]
+    final val ios // io.github.corneloaie.admob/NativeAd.ios|{}ios[0]
+        final fun <get-ios>(): swiftPMImport.io.github.corneloaie.admob/GADNativeAd // io.github.corneloaie.admob/NativeAd.ios.<get-ios>|<get-ios>(){}[0]
+    final val mediaContent // io.github.corneloaie.admob/NativeAd.mediaContent|{}mediaContent[0]
+        final fun <get-mediaContent>(): io.github.corneloaie.admob/NativeAdMediaContent? // io.github.corneloaie.admob/NativeAd.mediaContent.<get-mediaContent>|<get-mediaContent>(){}[0]
+    final val price // io.github.corneloaie.admob/NativeAd.price|{}price[0]
+        final fun <get-price>(): kotlin/String? // io.github.corneloaie.admob/NativeAd.price.<get-price>|<get-price>(){}[0]
+    final val responseInfo // io.github.corneloaie.admob/NativeAd.responseInfo|{}responseInfo[0]
+        final fun <get-responseInfo>(): io.github.corneloaie.admob/ResponseInfo? // io.github.corneloaie.admob/NativeAd.responseInfo.<get-responseInfo>|<get-responseInfo>(){}[0]
+    final val starRating // io.github.corneloaie.admob/NativeAd.starRating|{}starRating[0]
+        final fun <get-starRating>(): kotlin/Double? // io.github.corneloaie.admob/NativeAd.starRating.<get-starRating>|<get-starRating>(){}[0]
+    final val store // io.github.corneloaie.admob/NativeAd.store|{}store[0]
+        final fun <get-store>(): kotlin/String? // io.github.corneloaie.admob/NativeAd.store.<get-store>|<get-store>(){}[0]
+
+    final fun destroy() // io.github.corneloaie.admob/NativeAd.destroy|destroy(){}[0]
+}
+
+final class io.github.corneloaie.admob/NativeAdImage { // io.github.corneloaie.admob/NativeAdImage|null[0]
+    constructor <init>(kotlin/String?, kotlin/Double) // io.github.corneloaie.admob/NativeAdImage.<init>|<init>(kotlin.String?;kotlin.Double){}[0]
+
+    final val scale // io.github.corneloaie.admob/NativeAdImage.scale|{}scale[0]
+        final fun <get-scale>(): kotlin/Double // io.github.corneloaie.admob/NativeAdImage.scale.<get-scale>|<get-scale>(){}[0]
+    final val uri // io.github.corneloaie.admob/NativeAdImage.uri|{}uri[0]
+        final fun <get-uri>(): kotlin/String? // io.github.corneloaie.admob/NativeAdImage.uri.<get-uri>|<get-uri>(){}[0]
+
+    final fun component1(): kotlin/String? // io.github.corneloaie.admob/NativeAdImage.component1|component1(){}[0]
+    final fun component2(): kotlin/Double // io.github.corneloaie.admob/NativeAdImage.component2|component2(){}[0]
+    final fun copy(kotlin/String? = ..., kotlin/Double = ...): io.github.corneloaie.admob/NativeAdImage // io.github.corneloaie.admob/NativeAdImage.copy|copy(kotlin.String?;kotlin.Double){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.admob/NativeAdImage.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // io.github.corneloaie.admob/NativeAdImage.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // io.github.corneloaie.admob/NativeAdImage.toString|toString(){}[0]
+}
+
+final class io.github.corneloaie.admob/NativeAdLoader { // io.github.corneloaie.admob/NativeAdLoader|null[0]
+    constructor <init>(kotlin/String, io.github.corneloaie.admob/NativeAdOptions = ...) // io.github.corneloaie.admob/NativeAdLoader.<init>|<init>(kotlin.String;io.github.corneloaie.admob.NativeAdOptions){}[0]
+
+    final val adUnitId // io.github.corneloaie.admob/NativeAdLoader.adUnitId|{}adUnitId[0]
+        final fun <get-adUnitId>(): kotlin/String // io.github.corneloaie.admob/NativeAdLoader.adUnitId.<get-adUnitId>|<get-adUnitId>(){}[0]
+    final val options // io.github.corneloaie.admob/NativeAdLoader.options|{}options[0]
+        final fun <get-options>(): io.github.corneloaie.admob/NativeAdOptions // io.github.corneloaie.admob/NativeAdLoader.options.<get-options>|<get-options>(){}[0]
+
+    final suspend fun load(io.github.corneloaie.admob/AdRequest = ...): io.github.corneloaie.admob/NativeAd // io.github.corneloaie.admob/NativeAdLoader.load|load(io.github.corneloaie.admob.AdRequest){}[0]
+}
+
+final class io.github.corneloaie.admob/NativeAdMediaContent { // io.github.corneloaie.admob/NativeAdMediaContent|null[0]
+    constructor <init>(kotlin/Double, kotlin/Boolean, kotlin/Double) // io.github.corneloaie.admob/NativeAdMediaContent.<init>|<init>(kotlin.Double;kotlin.Boolean;kotlin.Double){}[0]
+
+    final val aspectRatio // io.github.corneloaie.admob/NativeAdMediaContent.aspectRatio|{}aspectRatio[0]
+        final fun <get-aspectRatio>(): kotlin/Double // io.github.corneloaie.admob/NativeAdMediaContent.aspectRatio.<get-aspectRatio>|<get-aspectRatio>(){}[0]
+    final val durationSeconds // io.github.corneloaie.admob/NativeAdMediaContent.durationSeconds|{}durationSeconds[0]
+        final fun <get-durationSeconds>(): kotlin/Double // io.github.corneloaie.admob/NativeAdMediaContent.durationSeconds.<get-durationSeconds>|<get-durationSeconds>(){}[0]
+    final val hasVideoContent // io.github.corneloaie.admob/NativeAdMediaContent.hasVideoContent|{}hasVideoContent[0]
+        final fun <get-hasVideoContent>(): kotlin/Boolean // io.github.corneloaie.admob/NativeAdMediaContent.hasVideoContent.<get-hasVideoContent>|<get-hasVideoContent>(){}[0]
+
+    final fun component1(): kotlin/Double // io.github.corneloaie.admob/NativeAdMediaContent.component1|component1(){}[0]
+    final fun component2(): kotlin/Boolean // io.github.corneloaie.admob/NativeAdMediaContent.component2|component2(){}[0]
+    final fun component3(): kotlin/Double // io.github.corneloaie.admob/NativeAdMediaContent.component3|component3(){}[0]
+    final fun copy(kotlin/Double = ..., kotlin/Boolean = ..., kotlin/Double = ...): io.github.corneloaie.admob/NativeAdMediaContent // io.github.corneloaie.admob/NativeAdMediaContent.copy|copy(kotlin.Double;kotlin.Boolean;kotlin.Double){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.admob/NativeAdMediaContent.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // io.github.corneloaie.admob/NativeAdMediaContent.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // io.github.corneloaie.admob/NativeAdMediaContent.toString|toString(){}[0]
+}
+
+final class io.github.corneloaie.admob/NativeAdOptions { // io.github.corneloaie.admob/NativeAdOptions|null[0]
+    constructor <init>(io.github.corneloaie.admob/MediaAspectRatio? = ..., io.github.corneloaie.admob/AdChoicesPlacement? = ..., kotlin/Boolean? = ...) // io.github.corneloaie.admob/NativeAdOptions.<init>|<init>(io.github.corneloaie.admob.MediaAspectRatio?;io.github.corneloaie.admob.AdChoicesPlacement?;kotlin.Boolean?){}[0]
+
+    final val adChoicesPlacement // io.github.corneloaie.admob/NativeAdOptions.adChoicesPlacement|{}adChoicesPlacement[0]
+        final fun <get-adChoicesPlacement>(): io.github.corneloaie.admob/AdChoicesPlacement? // io.github.corneloaie.admob/NativeAdOptions.adChoicesPlacement.<get-adChoicesPlacement>|<get-adChoicesPlacement>(){}[0]
+    final val mediaAspectRatio // io.github.corneloaie.admob/NativeAdOptions.mediaAspectRatio|{}mediaAspectRatio[0]
+        final fun <get-mediaAspectRatio>(): io.github.corneloaie.admob/MediaAspectRatio? // io.github.corneloaie.admob/NativeAdOptions.mediaAspectRatio.<get-mediaAspectRatio>|<get-mediaAspectRatio>(){}[0]
+    final val startMuted // io.github.corneloaie.admob/NativeAdOptions.startMuted|{}startMuted[0]
+        final fun <get-startMuted>(): kotlin/Boolean? // io.github.corneloaie.admob/NativeAdOptions.startMuted.<get-startMuted>|<get-startMuted>(){}[0]
+
+    final fun component1(): io.github.corneloaie.admob/MediaAspectRatio? // io.github.corneloaie.admob/NativeAdOptions.component1|component1(){}[0]
+    final fun component2(): io.github.corneloaie.admob/AdChoicesPlacement? // io.github.corneloaie.admob/NativeAdOptions.component2|component2(){}[0]
+    final fun component3(): kotlin/Boolean? // io.github.corneloaie.admob/NativeAdOptions.component3|component3(){}[0]
+    final fun copy(io.github.corneloaie.admob/MediaAspectRatio? = ..., io.github.corneloaie.admob/AdChoicesPlacement? = ..., kotlin/Boolean? = ...): io.github.corneloaie.admob/NativeAdOptions // io.github.corneloaie.admob/NativeAdOptions.copy|copy(io.github.corneloaie.admob.MediaAspectRatio?;io.github.corneloaie.admob.AdChoicesPlacement?;kotlin.Boolean?){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.admob/NativeAdOptions.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // io.github.corneloaie.admob/NativeAdOptions.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // io.github.corneloaie.admob/NativeAdOptions.toString|toString(){}[0]
+}
+
+final class io.github.corneloaie.admob/RequestConfiguration { // io.github.corneloaie.admob/RequestConfiguration|null[0]
+    constructor <init>(kotlin.collections/List<kotlin/String> = ..., kotlin/Boolean? = ..., kotlin/Boolean? = ..., io.github.corneloaie.admob/MaxAdContentRating? = ...) // io.github.corneloaie.admob/RequestConfiguration.<init>|<init>(kotlin.collections.List<kotlin.String>;kotlin.Boolean?;kotlin.Boolean?;io.github.corneloaie.admob.MaxAdContentRating?){}[0]
+
+    final val maxAdContentRating // io.github.corneloaie.admob/RequestConfiguration.maxAdContentRating|{}maxAdContentRating[0]
+        final fun <get-maxAdContentRating>(): io.github.corneloaie.admob/MaxAdContentRating? // io.github.corneloaie.admob/RequestConfiguration.maxAdContentRating.<get-maxAdContentRating>|<get-maxAdContentRating>(){}[0]
+    final val tagForChildDirectedTreatment // io.github.corneloaie.admob/RequestConfiguration.tagForChildDirectedTreatment|{}tagForChildDirectedTreatment[0]
+        final fun <get-tagForChildDirectedTreatment>(): kotlin/Boolean? // io.github.corneloaie.admob/RequestConfiguration.tagForChildDirectedTreatment.<get-tagForChildDirectedTreatment>|<get-tagForChildDirectedTreatment>(){}[0]
+    final val tagForUnderAgeOfConsent // io.github.corneloaie.admob/RequestConfiguration.tagForUnderAgeOfConsent|{}tagForUnderAgeOfConsent[0]
+        final fun <get-tagForUnderAgeOfConsent>(): kotlin/Boolean? // io.github.corneloaie.admob/RequestConfiguration.tagForUnderAgeOfConsent.<get-tagForUnderAgeOfConsent>|<get-tagForUnderAgeOfConsent>(){}[0]
+    final val testDeviceIds // io.github.corneloaie.admob/RequestConfiguration.testDeviceIds|{}testDeviceIds[0]
+        final fun <get-testDeviceIds>(): kotlin.collections/List<kotlin/String> // io.github.corneloaie.admob/RequestConfiguration.testDeviceIds.<get-testDeviceIds>|<get-testDeviceIds>(){}[0]
+
+    final fun component1(): kotlin.collections/List<kotlin/String> // io.github.corneloaie.admob/RequestConfiguration.component1|component1(){}[0]
+    final fun component2(): kotlin/Boolean? // io.github.corneloaie.admob/RequestConfiguration.component2|component2(){}[0]
+    final fun component3(): kotlin/Boolean? // io.github.corneloaie.admob/RequestConfiguration.component3|component3(){}[0]
+    final fun component4(): io.github.corneloaie.admob/MaxAdContentRating? // io.github.corneloaie.admob/RequestConfiguration.component4|component4(){}[0]
+    final fun copy(kotlin.collections/List<kotlin/String> = ..., kotlin/Boolean? = ..., kotlin/Boolean? = ..., io.github.corneloaie.admob/MaxAdContentRating? = ...): io.github.corneloaie.admob/RequestConfiguration // io.github.corneloaie.admob/RequestConfiguration.copy|copy(kotlin.collections.List<kotlin.String>;kotlin.Boolean?;kotlin.Boolean?;io.github.corneloaie.admob.MaxAdContentRating?){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.admob/RequestConfiguration.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // io.github.corneloaie.admob/RequestConfiguration.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // io.github.corneloaie.admob/RequestConfiguration.toString|toString(){}[0]
+}
+
+final class io.github.corneloaie.admob/ResponseInfo { // io.github.corneloaie.admob/ResponseInfo|null[0]
+    constructor <init>(kotlin/String?, kotlin/String?, io.github.corneloaie.admob/AdapterResponseInfo?, kotlin.collections/List<io.github.corneloaie.admob/AdapterResponseInfo>) // io.github.corneloaie.admob/ResponseInfo.<init>|<init>(kotlin.String?;kotlin.String?;io.github.corneloaie.admob.AdapterResponseInfo?;kotlin.collections.List<io.github.corneloaie.admob.AdapterResponseInfo>){}[0]
+
+    final val adapterResponses // io.github.corneloaie.admob/ResponseInfo.adapterResponses|{}adapterResponses[0]
+        final fun <get-adapterResponses>(): kotlin.collections/List<io.github.corneloaie.admob/AdapterResponseInfo> // io.github.corneloaie.admob/ResponseInfo.adapterResponses.<get-adapterResponses>|<get-adapterResponses>(){}[0]
+    final val loadedAdapterResponseInfo // io.github.corneloaie.admob/ResponseInfo.loadedAdapterResponseInfo|{}loadedAdapterResponseInfo[0]
+        final fun <get-loadedAdapterResponseInfo>(): io.github.corneloaie.admob/AdapterResponseInfo? // io.github.corneloaie.admob/ResponseInfo.loadedAdapterResponseInfo.<get-loadedAdapterResponseInfo>|<get-loadedAdapterResponseInfo>(){}[0]
+    final val mediationAdapterClassName // io.github.corneloaie.admob/ResponseInfo.mediationAdapterClassName|{}mediationAdapterClassName[0]
+        final fun <get-mediationAdapterClassName>(): kotlin/String? // io.github.corneloaie.admob/ResponseInfo.mediationAdapterClassName.<get-mediationAdapterClassName>|<get-mediationAdapterClassName>(){}[0]
+    final val responseId // io.github.corneloaie.admob/ResponseInfo.responseId|{}responseId[0]
+        final fun <get-responseId>(): kotlin/String? // io.github.corneloaie.admob/ResponseInfo.responseId.<get-responseId>|<get-responseId>(){}[0]
+
+    final fun component1(): kotlin/String? // io.github.corneloaie.admob/ResponseInfo.component1|component1(){}[0]
+    final fun component2(): kotlin/String? // io.github.corneloaie.admob/ResponseInfo.component2|component2(){}[0]
+    final fun component3(): io.github.corneloaie.admob/AdapterResponseInfo? // io.github.corneloaie.admob/ResponseInfo.component3|component3(){}[0]
+    final fun component4(): kotlin.collections/List<io.github.corneloaie.admob/AdapterResponseInfo> // io.github.corneloaie.admob/ResponseInfo.component4|component4(){}[0]
+    final fun copy(kotlin/String? = ..., kotlin/String? = ..., io.github.corneloaie.admob/AdapterResponseInfo? = ..., kotlin.collections/List<io.github.corneloaie.admob/AdapterResponseInfo> = ...): io.github.corneloaie.admob/ResponseInfo // io.github.corneloaie.admob/ResponseInfo.copy|copy(kotlin.String?;kotlin.String?;io.github.corneloaie.admob.AdapterResponseInfo?;kotlin.collections.List<io.github.corneloaie.admob.AdapterResponseInfo>){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.admob/ResponseInfo.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // io.github.corneloaie.admob/ResponseInfo.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // io.github.corneloaie.admob/ResponseInfo.toString|toString(){}[0]
+}
+
+final class io.github.corneloaie.admob/RewardItem { // io.github.corneloaie.admob/RewardItem|null[0]
+    constructor <init>(kotlin/String, kotlin/Int) // io.github.corneloaie.admob/RewardItem.<init>|<init>(kotlin.String;kotlin.Int){}[0]
+
+    final val amount // io.github.corneloaie.admob/RewardItem.amount|{}amount[0]
+        final fun <get-amount>(): kotlin/Int // io.github.corneloaie.admob/RewardItem.amount.<get-amount>|<get-amount>(){}[0]
+    final val type // io.github.corneloaie.admob/RewardItem.type|{}type[0]
+        final fun <get-type>(): kotlin/String // io.github.corneloaie.admob/RewardItem.type.<get-type>|<get-type>(){}[0]
+
+    final fun component1(): kotlin/String // io.github.corneloaie.admob/RewardItem.component1|component1(){}[0]
+    final fun component2(): kotlin/Int // io.github.corneloaie.admob/RewardItem.component2|component2(){}[0]
+    final fun copy(kotlin/String = ..., kotlin/Int = ...): io.github.corneloaie.admob/RewardItem // io.github.corneloaie.admob/RewardItem.copy|copy(kotlin.String;kotlin.Int){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.admob/RewardItem.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // io.github.corneloaie.admob/RewardItem.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // io.github.corneloaie.admob/RewardItem.toString|toString(){}[0]
+}
+
+final class io.github.corneloaie.admob/RewardedAd { // io.github.corneloaie.admob/RewardedAd|null[0]
+    final val adUnitId // io.github.corneloaie.admob/RewardedAd.adUnitId|{}adUnitId[0]
+        final fun <get-adUnitId>(): kotlin/String // io.github.corneloaie.admob/RewardedAd.adUnitId.<get-adUnitId>|<get-adUnitId>(){}[0]
+    final val events // io.github.corneloaie.admob/RewardedAd.events|{}events[0]
+        final fun <get-events>(): kotlinx.coroutines.flow/Flow<io.github.corneloaie.admob/AdEvent> // io.github.corneloaie.admob/RewardedAd.events.<get-events>|<get-events>(){}[0]
+    final val ios // io.github.corneloaie.admob/RewardedAd.ios|{}ios[0]
+        final fun <get-ios>(): swiftPMImport.io.github.corneloaie.admob/GADRewardedAd // io.github.corneloaie.admob/RewardedAd.ios.<get-ios>|<get-ios>(){}[0]
+    final val responseInfo // io.github.corneloaie.admob/RewardedAd.responseInfo|{}responseInfo[0]
+        final fun <get-responseInfo>(): io.github.corneloaie.admob/ResponseInfo? // io.github.corneloaie.admob/RewardedAd.responseInfo.<get-responseInfo>|<get-responseInfo>(){}[0]
+    final val rewardItem // io.github.corneloaie.admob/RewardedAd.rewardItem|{}rewardItem[0]
+        final fun <get-rewardItem>(): io.github.corneloaie.admob/RewardItem // io.github.corneloaie.admob/RewardedAd.rewardItem.<get-rewardItem>|<get-rewardItem>(){}[0]
+
+    final fun setServerSideVerificationOptions(io.github.corneloaie.admob/ServerSideVerificationOptions) // io.github.corneloaie.admob/RewardedAd.setServerSideVerificationOptions|setServerSideVerificationOptions(io.github.corneloaie.admob.ServerSideVerificationOptions){}[0]
+    final suspend fun show(platform.UIKit/UIViewController): io.github.corneloaie.admob/RewardItem? // io.github.corneloaie.admob/RewardedAd.show|show(platform.UIKit.UIViewController){}[0]
+
+    final object Companion { // io.github.corneloaie.admob/RewardedAd.Companion|null[0]
+        final suspend fun load(kotlin/String, io.github.corneloaie.admob/AdRequest = ...): io.github.corneloaie.admob/RewardedAd // io.github.corneloaie.admob/RewardedAd.Companion.load|load(kotlin.String;io.github.corneloaie.admob.AdRequest){}[0]
+    }
+}
+
+final class io.github.corneloaie.admob/ServerSideVerificationOptions { // io.github.corneloaie.admob/ServerSideVerificationOptions|null[0]
+    constructor <init>(kotlin/String? = ..., kotlin/String? = ...) // io.github.corneloaie.admob/ServerSideVerificationOptions.<init>|<init>(kotlin.String?;kotlin.String?){}[0]
+
+    final val customData // io.github.corneloaie.admob/ServerSideVerificationOptions.customData|{}customData[0]
+        final fun <get-customData>(): kotlin/String? // io.github.corneloaie.admob/ServerSideVerificationOptions.customData.<get-customData>|<get-customData>(){}[0]
+    final val userId // io.github.corneloaie.admob/ServerSideVerificationOptions.userId|{}userId[0]
+        final fun <get-userId>(): kotlin/String? // io.github.corneloaie.admob/ServerSideVerificationOptions.userId.<get-userId>|<get-userId>(){}[0]
+
+    final fun component1(): kotlin/String? // io.github.corneloaie.admob/ServerSideVerificationOptions.component1|component1(){}[0]
+    final fun component2(): kotlin/String? // io.github.corneloaie.admob/ServerSideVerificationOptions.component2|component2(){}[0]
+    final fun copy(kotlin/String? = ..., kotlin/String? = ...): io.github.corneloaie.admob/ServerSideVerificationOptions // io.github.corneloaie.admob/ServerSideVerificationOptions.copy|copy(kotlin.String?;kotlin.String?){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.admob/ServerSideVerificationOptions.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // io.github.corneloaie.admob/ServerSideVerificationOptions.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // io.github.corneloaie.admob/ServerSideVerificationOptions.toString|toString(){}[0]
+}
+
+final object io.github.corneloaie.admob/AdConsent { // io.github.corneloaie.admob/AdConsent|null[0]
+    final val canRequestAds // io.github.corneloaie.admob/AdConsent.canRequestAds|{}canRequestAds[0]
+        final fun <get-canRequestAds>(): kotlin/Boolean // io.github.corneloaie.admob/AdConsent.canRequestAds.<get-canRequestAds>|<get-canRequestAds>(){}[0]
+    final val consentStatus // io.github.corneloaie.admob/AdConsent.consentStatus|{}consentStatus[0]
+        final fun <get-consentStatus>(): io.github.corneloaie.admob/ConsentStatus // io.github.corneloaie.admob/AdConsent.consentStatus.<get-consentStatus>|<get-consentStatus>(){}[0]
+    final val isConsentFormAvailable // io.github.corneloaie.admob/AdConsent.isConsentFormAvailable|{}isConsentFormAvailable[0]
+        final fun <get-isConsentFormAvailable>(): kotlin/Boolean // io.github.corneloaie.admob/AdConsent.isConsentFormAvailable.<get-isConsentFormAvailable>|<get-isConsentFormAvailable>(){}[0]
+    final val privacyOptionsRequirementStatus // io.github.corneloaie.admob/AdConsent.privacyOptionsRequirementStatus|{}privacyOptionsRequirementStatus[0]
+        final fun <get-privacyOptionsRequirementStatus>(): io.github.corneloaie.admob/PrivacyOptionsRequirementStatus // io.github.corneloaie.admob/AdConsent.privacyOptionsRequirementStatus.<get-privacyOptionsRequirementStatus>|<get-privacyOptionsRequirementStatus>(){}[0]
+    final val state // io.github.corneloaie.admob/AdConsent.state|{}state[0]
+        final fun <get-state>(): kotlinx.coroutines.flow/StateFlow<io.github.corneloaie.admob/ConsentState> // io.github.corneloaie.admob/AdConsent.state.<get-state>|<get-state>(){}[0]
+
+    final fun reset() // io.github.corneloaie.admob/AdConsent.reset|reset(){}[0]
+    final suspend fun loadAndShowConsentFormIfRequired(platform.UIKit/UIViewController) // io.github.corneloaie.admob/AdConsent.loadAndShowConsentFormIfRequired|loadAndShowConsentFormIfRequired(platform.UIKit.UIViewController){}[0]
+    final suspend fun requestInfoUpdate(platform.UIKit/UIViewController, io.github.corneloaie.admob/ConsentRequestParameters = ...) // io.github.corneloaie.admob/AdConsent.requestInfoUpdate|requestInfoUpdate(platform.UIKit.UIViewController;io.github.corneloaie.admob.ConsentRequestParameters){}[0]
+    final suspend fun showPrivacyOptionsForm(platform.UIKit/UIViewController) // io.github.corneloaie.admob/AdConsent.showPrivacyOptionsForm|showPrivacyOptionsForm(platform.UIKit.UIViewController){}[0]
+}
+
+final object io.github.corneloaie.admob/AdMob { // io.github.corneloaie.admob/AdMob|null[0]
+    final val sdkVersion // io.github.corneloaie.admob/AdMob.sdkVersion|{}sdkVersion[0]
+        final fun <get-sdkVersion>(): kotlin/String // io.github.corneloaie.admob/AdMob.sdkVersion.<get-sdkVersion>|<get-sdkVersion>(){}[0]
+
+    final var requestConfiguration // io.github.corneloaie.admob/AdMob.requestConfiguration|{}requestConfiguration[0]
+        final fun <get-requestConfiguration>(): io.github.corneloaie.admob/RequestConfiguration // io.github.corneloaie.admob/AdMob.requestConfiguration.<get-requestConfiguration>|<get-requestConfiguration>(){}[0]
+        final fun <set-requestConfiguration>(io.github.corneloaie.admob/RequestConfiguration) // io.github.corneloaie.admob/AdMob.requestConfiguration.<set-requestConfiguration>|<set-requestConfiguration>(io.github.corneloaie.admob.RequestConfiguration){}[0]
+
+    final suspend fun initialize(): io.github.corneloaie.admob/InitializationStatus // io.github.corneloaie.admob/AdMob.initialize|initialize(){}[0]
+    final suspend fun openAdInspector(platform.UIKit/UIViewController) // io.github.corneloaie.admob/AdMob.openAdInspector|openAdInspector(platform.UIKit.UIViewController){}[0]
+}
+
+final fun io.github.corneloaie.admob/preferredHeight(platform.UIKit/UIView, kotlin/Double): kotlin/Double // io.github.corneloaie.admob/preferredHeight|preferredHeight(platform.UIKit.UIView;kotlin.Double){}[0]

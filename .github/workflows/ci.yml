@@ -1,0 +1,78 @@
+# Builds and tests every push to main and every pull request: the Android compilation and host tests, the iOS
+# compilations for device and simulator, the iOS simulator tests against the real SDKs, the metadata compilations
+# publishing runs, and the public API against api/ (checkKotlinAbi; `./gradlew updateKotlinAbi` rewrites it).
+
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  android:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+      - name: Set up JDK
+        uses: actions/setup-java@v6
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+      - uses: gradle/actions/setup-gradle@v6
+      - name: Compile and run the host tests
+        run: ./gradlew :admob:compileAndroidMain :admob:testAndroidHostTest
+      - name: Keep the test reports
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: android-test-reports
+          path: admob/build/reports/tests/
+          if-no-files-found: ignore
+
+  ios:
+    runs-on: macos-latest
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        # The SDKs as an app resolves them by default (the newest of each major), and exactly the oldest releases the
+        # library allows, which it must only call API of.
+        sdks: [ newest, floor ]
+    steps:
+      - uses: actions/checkout@v7
+      - name: Set up JDK
+        uses: actions/setup-java@v6
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+      - uses: gradle/actions/setup-gradle@v6
+      - uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: '26.6'
+      - name: Compile, run the simulator tests and check the API
+        if: matrix.sdks == 'newest'
+        run: >-
+          ./gradlew
+          :admob:compileKotlinIosArm64 :admob:compileKotlinIosSimulatorArm64
+          :admob:compileIosMainKotlinMetadata :admob:compileCommonMainKotlinMetadata
+          :admob:iosSimulatorArm64Test :admob:checkKotlinAbi
+      - name: Compile and run the simulator tests against the SDK floors
+        if: matrix.sdks == 'floor'
+        run: ./gradlew -Padmob.pinIosSdkFloor :admob:compileKotlinIosArm64 :admob:iosSimulatorArm64Test
+      - name: Keep the test reports
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: ios-test-reports-${{ matrix.sdks }}
+          path: admob/build/reports/tests/
+          if-no-files-found: ignore

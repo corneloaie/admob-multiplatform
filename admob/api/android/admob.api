@@ -1,0 +1,498 @@
+public final class io/github/corneloaie/admob/AdChoicesPlacement : java/lang/Enum {
+	public static final field BOTTOM_LEFT Lio/github/corneloaie/admob/AdChoicesPlacement;
+	public static final field BOTTOM_RIGHT Lio/github/corneloaie/admob/AdChoicesPlacement;
+	public static final field TOP_LEFT Lio/github/corneloaie/admob/AdChoicesPlacement;
+	public static final field TOP_RIGHT Lio/github/corneloaie/admob/AdChoicesPlacement;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/corneloaie/admob/AdChoicesPlacement;
+	public static fun values ()[Lio/github/corneloaie/admob/AdChoicesPlacement;
+}
+
+public final class io/github/corneloaie/admob/AdConsent {
+	public static final field INSTANCE Lio/github/corneloaie/admob/AdConsent;
+	public final fun getCanRequestAds ()Z
+	public final fun getConsentStatus ()Lio/github/corneloaie/admob/ConsentStatus;
+	public final fun getPrivacyOptionsRequirementStatus ()Lio/github/corneloaie/admob/PrivacyOptionsRequirementStatus;
+	public final fun getState ()Lkotlinx/coroutines/flow/StateFlow;
+	public final fun isConsentFormAvailable ()Z
+	public final fun loadAndShowConsentFormIfRequired (Landroid/app/Activity;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun requestInfoUpdate (Landroid/app/Activity;Lio/github/corneloaie/admob/ConsentRequestParameters;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun requestInfoUpdate$default (Lio/github/corneloaie/admob/AdConsent;Landroid/app/Activity;Lio/github/corneloaie/admob/ConsentRequestParameters;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun reset ()V
+	public final fun showPrivacyOptionsForm (Landroid/app/Activity;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class io/github/corneloaie/admob/AdError {
+	public fun <init> (Lio/github/corneloaie/admob/AdErrorCode;ILjava/lang/String;Ljava/lang/String;Lio/github/corneloaie/admob/ResponseInfo;)V
+	public synthetic fun <init> (Lio/github/corneloaie/admob/AdErrorCode;ILjava/lang/String;Ljava/lang/String;Lio/github/corneloaie/admob/ResponseInfo;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lio/github/corneloaie/admob/AdErrorCode;
+	public final fun component2 ()I
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Lio/github/corneloaie/admob/ResponseInfo;
+	public final fun copy (Lio/github/corneloaie/admob/AdErrorCode;ILjava/lang/String;Ljava/lang/String;Lio/github/corneloaie/admob/ResponseInfo;)Lio/github/corneloaie/admob/AdError;
+	public static synthetic fun copy$default (Lio/github/corneloaie/admob/AdError;Lio/github/corneloaie/admob/AdErrorCode;ILjava/lang/String;Ljava/lang/String;Lio/github/corneloaie/admob/ResponseInfo;ILjava/lang/Object;)Lio/github/corneloaie/admob/AdError;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCode ()Lio/github/corneloaie/admob/AdErrorCode;
+	public final fun getDomain ()Ljava/lang/String;
+	public final fun getMessage ()Ljava/lang/String;
+	public final fun getPlatformCode ()I
+	public final fun getResponseInfo ()Lio/github/corneloaie/admob/ResponseInfo;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/corneloaie/admob/AdErrorCode : java/lang/Enum {
+	public static final field ALREADY_USED Lio/github/corneloaie/admob/AdErrorCode;
+	public static final field APP_ID_MISSING Lio/github/corneloaie/admob/AdErrorCode;
+	public static final field INTERNAL_ERROR Lio/github/corneloaie/admob/AdErrorCode;
+	public static final field INVALID_REQUEST Lio/github/corneloaie/admob/AdErrorCode;
+	public static final field MEDIATION_ERROR Lio/github/corneloaie/admob/AdErrorCode;
+	public static final field NETWORK_ERROR Lio/github/corneloaie/admob/AdErrorCode;
+	public static final field NOT_IN_TEST_MODE Lio/github/corneloaie/admob/AdErrorCode;
+	public static final field NOT_READY Lio/github/corneloaie/admob/AdErrorCode;
+	public static final field NO_FILL Lio/github/corneloaie/admob/AdErrorCode;
+	public static final field TIMEOUT Lio/github/corneloaie/admob/AdErrorCode;
+	public static final field UNKNOWN Lio/github/corneloaie/admob/AdErrorCode;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/corneloaie/admob/AdErrorCode;
+	public static fun values ()[Lio/github/corneloaie/admob/AdErrorCode;
+}
+
+public abstract interface class io/github/corneloaie/admob/AdEvent {
+}
+
+public final class io/github/corneloaie/admob/AdEvent$Click : io/github/corneloaie/admob/AdEvent {
+	public static final field INSTANCE Lio/github/corneloaie/admob/AdEvent$Click;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/corneloaie/admob/AdEvent$Dismissed : io/github/corneloaie/admob/AdEvent {
+	public static final field INSTANCE Lio/github/corneloaie/admob/AdEvent$Dismissed;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/corneloaie/admob/AdEvent$FailedToShow : io/github/corneloaie/admob/AdEvent {
+	public fun <init> (Lio/github/corneloaie/admob/AdError;)V
+	public final fun component1 ()Lio/github/corneloaie/admob/AdError;
+	public final fun copy (Lio/github/corneloaie/admob/AdError;)Lio/github/corneloaie/admob/AdEvent$FailedToShow;
+	public static synthetic fun copy$default (Lio/github/corneloaie/admob/AdEvent$FailedToShow;Lio/github/corneloaie/admob/AdError;ILjava/lang/Object;)Lio/github/corneloaie/admob/AdEvent$FailedToShow;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getError ()Lio/github/corneloaie/admob/AdError;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/corneloaie/admob/AdEvent$Impression : io/github/corneloaie/admob/AdEvent {
+	public static final field INSTANCE Lio/github/corneloaie/admob/AdEvent$Impression;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/corneloaie/admob/AdEvent$Paid : io/github/corneloaie/admob/AdEvent {
+	public fun <init> (Lio/github/corneloaie/admob/AdValue;)V
+	public final fun component1 ()Lio/github/corneloaie/admob/AdValue;
+	public final fun copy (Lio/github/corneloaie/admob/AdValue;)Lio/github/corneloaie/admob/AdEvent$Paid;
+	public static synthetic fun copy$default (Lio/github/corneloaie/admob/AdEvent$Paid;Lio/github/corneloaie/admob/AdValue;ILjava/lang/Object;)Lio/github/corneloaie/admob/AdEvent$Paid;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getValue ()Lio/github/corneloaie/admob/AdValue;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/corneloaie/admob/AdEvent$RewardEarned : io/github/corneloaie/admob/AdEvent {
+	public fun <init> (Lio/github/corneloaie/admob/RewardItem;)V
+	public final fun component1 ()Lio/github/corneloaie/admob/RewardItem;
+	public final fun copy (Lio/github/corneloaie/admob/RewardItem;)Lio/github/corneloaie/admob/AdEvent$RewardEarned;
+	public static synthetic fun copy$default (Lio/github/corneloaie/admob/AdEvent$RewardEarned;Lio/github/corneloaie/admob/RewardItem;ILjava/lang/Object;)Lio/github/corneloaie/admob/AdEvent$RewardEarned;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getReward ()Lio/github/corneloaie/admob/RewardItem;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/corneloaie/admob/AdEvent$Shown : io/github/corneloaie/admob/AdEvent {
+	public static final field INSTANCE Lio/github/corneloaie/admob/AdEvent$Shown;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/corneloaie/admob/AdMob {
+	public static final field INSTANCE Lio/github/corneloaie/admob/AdMob;
+	public final fun getRequestConfiguration ()Lio/github/corneloaie/admob/RequestConfiguration;
+	public final fun getSdkVersion ()Ljava/lang/String;
+	public final fun initialize (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun openAdInspector (Landroid/app/Activity;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun setRequestConfiguration (Lio/github/corneloaie/admob/RequestConfiguration;)V
+}
+
+public final class io/github/corneloaie/admob/AdMobException : java/lang/Exception {
+	public fun <init> (Lio/github/corneloaie/admob/AdError;)V
+	public final fun getError ()Lio/github/corneloaie/admob/AdError;
+}
+
+public final class io/github/corneloaie/admob/AdRequest {
+	public fun <init> ()V
+	public fun <init> (Ljava/util/Set;Ljava/lang/String;Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/util/Set;Ljava/lang/String;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/util/Set;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/util/List;
+	public final fun copy (Ljava/util/Set;Ljava/lang/String;Ljava/util/List;)Lio/github/corneloaie/admob/AdRequest;
+	public static synthetic fun copy$default (Lio/github/corneloaie/admob/AdRequest;Ljava/util/Set;Ljava/lang/String;Ljava/util/List;ILjava/lang/Object;)Lio/github/corneloaie/admob/AdRequest;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getContentUrl ()Ljava/lang/String;
+	public final fun getKeywords ()Ljava/util/Set;
+	public final fun getNeighboringContentUrls ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/corneloaie/admob/AdValue {
+	public fun <init> (JLjava/lang/String;Lio/github/corneloaie/admob/AdValuePrecision;)V
+	public final fun component1 ()J
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Lio/github/corneloaie/admob/AdValuePrecision;
+	public final fun copy (JLjava/lang/String;Lio/github/corneloaie/admob/AdValuePrecision;)Lio/github/corneloaie/admob/AdValue;
+	public static synthetic fun copy$default (Lio/github/corneloaie/admob/AdValue;JLjava/lang/String;Lio/github/corneloaie/admob/AdValuePrecision;ILjava/lang/Object;)Lio/github/corneloaie/admob/AdValue;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCurrencyCode ()Ljava/lang/String;
+	public final fun getPrecision ()Lio/github/corneloaie/admob/AdValuePrecision;
+	public final fun getValueMicros ()J
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/corneloaie/admob/AdValuePrecision : java/lang/Enum {
+	public static final field ESTIMATED Lio/github/corneloaie/admob/AdValuePrecision;
+	public static final field PRECISE Lio/github/corneloaie/admob/AdValuePrecision;
+	public static final field PUBLISHER_PROVIDED Lio/github/corneloaie/admob/AdValuePrecision;
+	public static final field UNKNOWN Lio/github/corneloaie/admob/AdValuePrecision;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/corneloaie/admob/AdValuePrecision;
+	public static fun values ()[Lio/github/corneloaie/admob/AdValuePrecision;
+}
+
+public final class io/github/corneloaie/admob/AdapterResponseInfo {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JLio/github/corneloaie/admob/AdError;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()J
+	public final fun component7 ()Lio/github/corneloaie/admob/AdError;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JLio/github/corneloaie/admob/AdError;)Lio/github/corneloaie/admob/AdapterResponseInfo;
+	public static synthetic fun copy$default (Lio/github/corneloaie/admob/AdapterResponseInfo;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JLio/github/corneloaie/admob/AdError;ILjava/lang/Object;)Lio/github/corneloaie/admob/AdapterResponseInfo;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAdSourceId ()Ljava/lang/String;
+	public final fun getAdSourceInstanceId ()Ljava/lang/String;
+	public final fun getAdSourceInstanceName ()Ljava/lang/String;
+	public final fun getAdSourceName ()Ljava/lang/String;
+	public final fun getAdapterClassName ()Ljava/lang/String;
+	public final fun getError ()Lio/github/corneloaie/admob/AdError;
+	public final fun getLatencyMillis ()J
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/corneloaie/admob/AdapterState : java/lang/Enum {
+	public static final field NOT_READY Lio/github/corneloaie/admob/AdapterState;
+	public static final field READY Lio/github/corneloaie/admob/AdapterState;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/corneloaie/admob/AdapterState;
+	public static fun values ()[Lio/github/corneloaie/admob/AdapterState;
+}
+
+public final class io/github/corneloaie/admob/AdapterStatus {
+	public fun <init> (Lio/github/corneloaie/admob/AdapterState;Ljava/lang/String;J)V
+	public final fun component1 ()Lio/github/corneloaie/admob/AdapterState;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()J
+	public final fun copy (Lio/github/corneloaie/admob/AdapterState;Ljava/lang/String;J)Lio/github/corneloaie/admob/AdapterStatus;
+	public static synthetic fun copy$default (Lio/github/corneloaie/admob/AdapterStatus;Lio/github/corneloaie/admob/AdapterState;Ljava/lang/String;JILjava/lang/Object;)Lio/github/corneloaie/admob/AdapterStatus;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDescription ()Ljava/lang/String;
+	public final fun getLatencyMillis ()J
+	public final fun getState ()Lio/github/corneloaie/admob/AdapterState;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/corneloaie/admob/ConsentDebugSettings {
+	public fun <init> ()V
+	public fun <init> (Lio/github/corneloaie/admob/DebugGeography;Ljava/util/List;)V
+	public synthetic fun <init> (Lio/github/corneloaie/admob/DebugGeography;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lio/github/corneloaie/admob/DebugGeography;
+	public final fun component2 ()Ljava/util/List;
+	public final fun copy (Lio/github/corneloaie/admob/DebugGeography;Ljava/util/List;)Lio/github/corneloaie/admob/ConsentDebugSettings;
+	public static synthetic fun copy$default (Lio/github/corneloaie/admob/ConsentDebugSettings;Lio/github/corneloaie/admob/DebugGeography;Ljava/util/List;ILjava/lang/Object;)Lio/github/corneloaie/admob/ConsentDebugSettings;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getGeography ()Lio/github/corneloaie/admob/DebugGeography;
+	public final fun getTestDeviceHashedIds ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/corneloaie/admob/ConsentRequestParameters {
+	public fun <init> ()V
+	public fun <init> (ZLio/github/corneloaie/admob/ConsentDebugSettings;)V
+	public synthetic fun <init> (ZLio/github/corneloaie/admob/ConsentDebugSettings;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Z
+	public final fun component2 ()Lio/github/corneloaie/admob/ConsentDebugSettings;
+	public final fun copy (ZLio/github/corneloaie/admob/ConsentDebugSettings;)Lio/github/corneloaie/admob/ConsentRequestParameters;
+	public static synthetic fun copy$default (Lio/github/corneloaie/admob/ConsentRequestParameters;ZLio/github/corneloaie/admob/ConsentDebugSettings;ILjava/lang/Object;)Lio/github/corneloaie/admob/ConsentRequestParameters;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDebugSettings ()Lio/github/corneloaie/admob/ConsentDebugSettings;
+	public final fun getTagForUnderAgeOfConsent ()Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/corneloaie/admob/ConsentState {
+	public fun <init> (Lio/github/corneloaie/admob/ConsentStatus;ZLio/github/corneloaie/admob/PrivacyOptionsRequirementStatus;)V
+	public final fun component1 ()Lio/github/corneloaie/admob/ConsentStatus;
+	public final fun component2 ()Z
+	public final fun component3 ()Lio/github/corneloaie/admob/PrivacyOptionsRequirementStatus;
+	public final fun copy (Lio/github/corneloaie/admob/ConsentStatus;ZLio/github/corneloaie/admob/PrivacyOptionsRequirementStatus;)Lio/github/corneloaie/admob/ConsentState;
+	public static synthetic fun copy$default (Lio/github/corneloaie/admob/ConsentState;Lio/github/corneloaie/admob/ConsentStatus;ZLio/github/corneloaie/admob/PrivacyOptionsRequirementStatus;ILjava/lang/Object;)Lio/github/corneloaie/admob/ConsentState;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCanRequestAds ()Z
+	public final fun getConsentStatus ()Lio/github/corneloaie/admob/ConsentStatus;
+	public final fun getPrivacyOptionsRequirementStatus ()Lio/github/corneloaie/admob/PrivacyOptionsRequirementStatus;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/corneloaie/admob/ConsentStatus : java/lang/Enum {
+	public static final field NOT_REQUIRED Lio/github/corneloaie/admob/ConsentStatus;
+	public static final field OBTAINED Lio/github/corneloaie/admob/ConsentStatus;
+	public static final field REQUIRED Lio/github/corneloaie/admob/ConsentStatus;
+	public static final field UNKNOWN Lio/github/corneloaie/admob/ConsentStatus;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/corneloaie/admob/ConsentStatus;
+	public static fun values ()[Lio/github/corneloaie/admob/ConsentStatus;
+}
+
+public final class io/github/corneloaie/admob/DebugGeography : java/lang/Enum {
+	public static final field DISABLED Lio/github/corneloaie/admob/DebugGeography;
+	public static final field EEA Lio/github/corneloaie/admob/DebugGeography;
+	public static final field OTHER Lio/github/corneloaie/admob/DebugGeography;
+	public static final field REGULATED_US_STATE Lio/github/corneloaie/admob/DebugGeography;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/corneloaie/admob/DebugGeography;
+	public static fun values ()[Lio/github/corneloaie/admob/DebugGeography;
+}
+
+public final class io/github/corneloaie/admob/InitializationStatus {
+	public fun <init> (Ljava/util/Map;)V
+	public final fun component1 ()Ljava/util/Map;
+	public final fun copy (Ljava/util/Map;)Lio/github/corneloaie/admob/InitializationStatus;
+	public static synthetic fun copy$default (Lio/github/corneloaie/admob/InitializationStatus;Ljava/util/Map;ILjava/lang/Object;)Lio/github/corneloaie/admob/InitializationStatus;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAdapterStatuses ()Ljava/util/Map;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/corneloaie/admob/InterstitialAd {
+	public static final field Companion Lio/github/corneloaie/admob/InterstitialAd$Companion;
+	public final fun getAdUnitId ()Ljava/lang/String;
+	public final fun getAndroid ()Lcom/google/android/gms/ads/interstitial/InterstitialAd;
+	public final fun getEvents ()Lkotlinx/coroutines/flow/Flow;
+	public final fun getResponseInfo ()Lio/github/corneloaie/admob/ResponseInfo;
+	public final fun show (Landroid/app/Activity;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class io/github/corneloaie/admob/InterstitialAd$Companion {
+	public final fun load (Ljava/lang/String;Lio/github/corneloaie/admob/AdRequest;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun load$default (Lio/github/corneloaie/admob/InterstitialAd$Companion;Ljava/lang/String;Lio/github/corneloaie/admob/AdRequest;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class io/github/corneloaie/admob/MaxAdContentRating : java/lang/Enum {
+	public static final field G Lio/github/corneloaie/admob/MaxAdContentRating;
+	public static final field MA Lio/github/corneloaie/admob/MaxAdContentRating;
+	public static final field PG Lio/github/corneloaie/admob/MaxAdContentRating;
+	public static final field T Lio/github/corneloaie/admob/MaxAdContentRating;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/corneloaie/admob/MaxAdContentRating;
+	public static fun values ()[Lio/github/corneloaie/admob/MaxAdContentRating;
+}
+
+public final class io/github/corneloaie/admob/MediaAspectRatio : java/lang/Enum {
+	public static final field ANY Lio/github/corneloaie/admob/MediaAspectRatio;
+	public static final field LANDSCAPE Lio/github/corneloaie/admob/MediaAspectRatio;
+	public static final field PORTRAIT Lio/github/corneloaie/admob/MediaAspectRatio;
+	public static final field SQUARE Lio/github/corneloaie/admob/MediaAspectRatio;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/corneloaie/admob/MediaAspectRatio;
+	public static fun values ()[Lio/github/corneloaie/admob/MediaAspectRatio;
+}
+
+public final class io/github/corneloaie/admob/NativeAd {
+	public final fun destroy ()V
+	public final fun getAdUnitId ()Ljava/lang/String;
+	public final fun getAdvertiser ()Ljava/lang/String;
+	public final fun getAndroid ()Lcom/google/android/gms/ads/nativead/NativeAd;
+	public final fun getBody ()Ljava/lang/String;
+	public final fun getCallToAction ()Ljava/lang/String;
+	public final fun getEvents ()Lkotlinx/coroutines/flow/Flow;
+	public final fun getHeadline ()Ljava/lang/String;
+	public final fun getIcon ()Lio/github/corneloaie/admob/NativeAdImage;
+	public final fun getImages ()Ljava/util/List;
+	public final fun getMediaContent ()Lio/github/corneloaie/admob/NativeAdMediaContent;
+	public final fun getPrice ()Ljava/lang/String;
+	public final fun getResponseInfo ()Lio/github/corneloaie/admob/ResponseInfo;
+	public final fun getStarRating ()Ljava/lang/Double;
+	public final fun getStore ()Ljava/lang/String;
+}
+
+public final class io/github/corneloaie/admob/NativeAdImage {
+	public fun <init> (Ljava/lang/String;D)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()D
+	public final fun copy (Ljava/lang/String;D)Lio/github/corneloaie/admob/NativeAdImage;
+	public static synthetic fun copy$default (Lio/github/corneloaie/admob/NativeAdImage;Ljava/lang/String;DILjava/lang/Object;)Lio/github/corneloaie/admob/NativeAdImage;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getScale ()D
+	public final fun getUri ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/corneloaie/admob/NativeAdLoader {
+	public fun <init> (Ljava/lang/String;Lio/github/corneloaie/admob/NativeAdOptions;)V
+	public synthetic fun <init> (Ljava/lang/String;Lio/github/corneloaie/admob/NativeAdOptions;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getAdUnitId ()Ljava/lang/String;
+	public final fun getOptions ()Lio/github/corneloaie/admob/NativeAdOptions;
+	public final fun load (Lio/github/corneloaie/admob/AdRequest;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun load$default (Lio/github/corneloaie/admob/NativeAdLoader;Lio/github/corneloaie/admob/AdRequest;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class io/github/corneloaie/admob/NativeAdMediaContent {
+	public fun <init> (DZD)V
+	public final fun component1 ()D
+	public final fun component2 ()Z
+	public final fun component3 ()D
+	public final fun copy (DZD)Lio/github/corneloaie/admob/NativeAdMediaContent;
+	public static synthetic fun copy$default (Lio/github/corneloaie/admob/NativeAdMediaContent;DZDILjava/lang/Object;)Lio/github/corneloaie/admob/NativeAdMediaContent;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAspectRatio ()D
+	public final fun getDurationSeconds ()D
+	public final fun getHasVideoContent ()Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/corneloaie/admob/NativeAdOptions {
+	public fun <init> ()V
+	public fun <init> (Lio/github/corneloaie/admob/MediaAspectRatio;Lio/github/corneloaie/admob/AdChoicesPlacement;Ljava/lang/Boolean;)V
+	public synthetic fun <init> (Lio/github/corneloaie/admob/MediaAspectRatio;Lio/github/corneloaie/admob/AdChoicesPlacement;Ljava/lang/Boolean;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lio/github/corneloaie/admob/MediaAspectRatio;
+	public final fun component2 ()Lio/github/corneloaie/admob/AdChoicesPlacement;
+	public final fun component3 ()Ljava/lang/Boolean;
+	public final fun copy (Lio/github/corneloaie/admob/MediaAspectRatio;Lio/github/corneloaie/admob/AdChoicesPlacement;Ljava/lang/Boolean;)Lio/github/corneloaie/admob/NativeAdOptions;
+	public static synthetic fun copy$default (Lio/github/corneloaie/admob/NativeAdOptions;Lio/github/corneloaie/admob/MediaAspectRatio;Lio/github/corneloaie/admob/AdChoicesPlacement;Ljava/lang/Boolean;ILjava/lang/Object;)Lio/github/corneloaie/admob/NativeAdOptions;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAdChoicesPlacement ()Lio/github/corneloaie/admob/AdChoicesPlacement;
+	public final fun getMediaAspectRatio ()Lio/github/corneloaie/admob/MediaAspectRatio;
+	public final fun getStartMuted ()Ljava/lang/Boolean;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/corneloaie/admob/PrivacyOptionsRequirementStatus : java/lang/Enum {
+	public static final field NOT_REQUIRED Lio/github/corneloaie/admob/PrivacyOptionsRequirementStatus;
+	public static final field REQUIRED Lio/github/corneloaie/admob/PrivacyOptionsRequirementStatus;
+	public static final field UNKNOWN Lio/github/corneloaie/admob/PrivacyOptionsRequirementStatus;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/corneloaie/admob/PrivacyOptionsRequirementStatus;
+	public static fun values ()[Lio/github/corneloaie/admob/PrivacyOptionsRequirementStatus;
+}
+
+public final class io/github/corneloaie/admob/RequestConfiguration {
+	public fun <init> ()V
+	public fun <init> (Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Boolean;Lio/github/corneloaie/admob/MaxAdContentRating;)V
+	public synthetic fun <init> (Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Boolean;Lio/github/corneloaie/admob/MaxAdContentRating;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Ljava/lang/Boolean;
+	public final fun component3 ()Ljava/lang/Boolean;
+	public final fun component4 ()Lio/github/corneloaie/admob/MaxAdContentRating;
+	public final fun copy (Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Boolean;Lio/github/corneloaie/admob/MaxAdContentRating;)Lio/github/corneloaie/admob/RequestConfiguration;
+	public static synthetic fun copy$default (Lio/github/corneloaie/admob/RequestConfiguration;Ljava/util/List;Ljava/lang/Boolean;Ljava/lang/Boolean;Lio/github/corneloaie/admob/MaxAdContentRating;ILjava/lang/Object;)Lio/github/corneloaie/admob/RequestConfiguration;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getMaxAdContentRating ()Lio/github/corneloaie/admob/MaxAdContentRating;
+	public final fun getTagForChildDirectedTreatment ()Ljava/lang/Boolean;
+	public final fun getTagForUnderAgeOfConsent ()Ljava/lang/Boolean;
+	public final fun getTestDeviceIds ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/corneloaie/admob/ResponseInfo {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Lio/github/corneloaie/admob/AdapterResponseInfo;Ljava/util/List;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Lio/github/corneloaie/admob/AdapterResponseInfo;
+	public final fun component4 ()Ljava/util/List;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Lio/github/corneloaie/admob/AdapterResponseInfo;Ljava/util/List;)Lio/github/corneloaie/admob/ResponseInfo;
+	public static synthetic fun copy$default (Lio/github/corneloaie/admob/ResponseInfo;Ljava/lang/String;Ljava/lang/String;Lio/github/corneloaie/admob/AdapterResponseInfo;Ljava/util/List;ILjava/lang/Object;)Lio/github/corneloaie/admob/ResponseInfo;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAdapterResponses ()Ljava/util/List;
+	public final fun getLoadedAdapterResponseInfo ()Lio/github/corneloaie/admob/AdapterResponseInfo;
+	public final fun getMediationAdapterClassName ()Ljava/lang/String;
+	public final fun getResponseId ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/corneloaie/admob/RewardItem {
+	public fun <init> (Ljava/lang/String;I)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()I
+	public final fun copy (Ljava/lang/String;I)Lio/github/corneloaie/admob/RewardItem;
+	public static synthetic fun copy$default (Lio/github/corneloaie/admob/RewardItem;Ljava/lang/String;IILjava/lang/Object;)Lio/github/corneloaie/admob/RewardItem;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAmount ()I
+	public final fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/corneloaie/admob/RewardedAd {
+	public static final field Companion Lio/github/corneloaie/admob/RewardedAd$Companion;
+	public final fun getAdUnitId ()Ljava/lang/String;
+	public final fun getAndroid ()Lcom/google/android/gms/ads/rewarded/RewardedAd;
+	public final fun getEvents ()Lkotlinx/coroutines/flow/Flow;
+	public final fun getResponseInfo ()Lio/github/corneloaie/admob/ResponseInfo;
+	public final fun getRewardItem ()Lio/github/corneloaie/admob/RewardItem;
+	public final fun setServerSideVerificationOptions (Lio/github/corneloaie/admob/ServerSideVerificationOptions;)V
+	public final fun show (Landroid/app/Activity;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class io/github/corneloaie/admob/RewardedAd$Companion {
+	public final fun load (Ljava/lang/String;Lio/github/corneloaie/admob/AdRequest;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun load$default (Lio/github/corneloaie/admob/RewardedAd$Companion;Ljava/lang/String;Lio/github/corneloaie/admob/AdRequest;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class io/github/corneloaie/admob/ServerSideVerificationOptions {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lio/github/corneloaie/admob/ServerSideVerificationOptions;
+	public static synthetic fun copy$default (Lio/github/corneloaie/admob/ServerSideVerificationOptions;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lio/github/corneloaie/admob/ServerSideVerificationOptions;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCustomData ()Ljava/lang/String;
+	public final fun getUserId ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+

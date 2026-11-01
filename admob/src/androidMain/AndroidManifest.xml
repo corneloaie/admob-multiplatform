@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application>
+        <!-- Hands the library the application Context at startup, so loading ads and reading consent need none. -->
+        <provider
+            android:name="io.github.corneloaie.admob.AdMobInitProvider"
+            android:authorities="${applicationId}.admob-multiplatform-init"
+            android:exported="false" />
+    </application>
+</manifest>

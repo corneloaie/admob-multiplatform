@@ -1,6 +1,11 @@
 [versions]
 agp = "9.4.1"
 kotlin = "2.4.21"
+# The floor a library's consumers inherit. Held below 1.11 like firebase-multiplatform, which apps use alongside this one
+# (1.11.0 regressed Promise rejection handling on Wasm/JS, Kotlin/kotlinx.coroutines#4678).
+kotlinx-coroutines = "1.10.2"
+# Publishing tooling, as in firebase-multiplatform. Pull request CI never publishes: a bump needs a Publish dry run.
+publish = "0.34.0"
 android-compileSdk = "36"
 android-minSdk = "24"
 # Google Mobile Ads (Android) and the Android UMP SDK — the versions InfoTraffic ships.
@@ -9,6 +14,7 @@ user-messaging-platform = "4.0.0"
 # SwiftPM lower bounds (`from(...)`): each resolves to the newest release of the same major. They are the floors
 # InfoTraffic's Xcode project pins today (GoogleMobileAds 13.3.0, UMP 3.0.0), so an app linking either package
 # directly still resolves ONE copy. swift-package-manager-google-mobile-ads itself depends on UMP 1.1.0..<4.0.0.
+# The library only calls API both floors have: -Padmob.pinIosSdkFloor builds and tests against exactly these.
 google-mobile-ads-ios = "13.3.0"
 google-ump-ios = "3.0.0"
 # GoogleMobileAds 13 declares iOS 13; Kotlin/Native and the Firebase lib floor at 15.
@@ -17,7 +23,11 @@ ios-deploymentTarget = "15.0"
 [libraries]
 play-services-ads = { module = "com.google.android.gms:play-services-ads", version.ref = "play-services-ads" }
 user-messaging-platform = { module = "com.google.android.ump:user-messaging-platform", version.ref = "user-messaging-platform" }
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
+kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinx-coroutines" }
 
 [plugins]
 android-kotlin-multiplatform-library = { id = "com.android.kotlin.multiplatform.library", version.ref = "agp" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+publish = { id = "com.vanniktech.maven.publish", version.ref = "publish" }
