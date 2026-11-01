@@ -1,0 +1,16 @@
+/**/.gradle/
+/**/build/
+/.idea/
+local.properties
+*.iml
+.DS_Store
+*.log
+.kotlin/
+
+# Kotlin SwiftPM import lock/checkout dirs
+.swiftpm-locks/
+/**/.build/
+/**/.swiftpm/
+
+# IDEA-generated Gradle daemon JVM criteria
+gradle/gradle-daemon-jvm.properties
