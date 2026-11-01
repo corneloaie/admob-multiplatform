@@ -201,7 +201,7 @@ deciding when to load one stay in the app.
 On Android, register `ad.android` (a `com.google.android.gms.ads.nativead.NativeAd`) with your `NativeAdView`:
 
 ```kotlin
-// androidMain, e.g. in an AndroidView's update block
+// androidMain, e.g. in an AndroidView's update block; headline and mediaView are children of nativeAdView
 nativeAdView.headlineView = headline
 nativeAdView.mediaView = mediaView
 headline.text = ad.headline
@@ -212,11 +212,14 @@ On iOS, `ad.ios` is the `GADNativeAd`. The library adds three helpers for a card
 
 ```kotlin
 // iosMain
-val card = AttachRegisteringNativeAdView().apply {
-    headlineView = headlineLabel
-    mediaView = GADMediaView()
-    addSubview(AdBadgeLabel().apply { text = "Ad" })
-}
+val card = AttachRegisteringNativeAdView()
+val headline = UILabel().apply { text = ad.headline }
+val media = GADMediaView()
+val badge = AdBadgeLabel().apply { text = "Ad" }
+// The asset outlets are weak: add each view to the card first, then register it (Auto Layout constraints omitted).
+listOf(headline, media, badge).forEach(card::addSubview)
+card.headlineView = headline
+card.mediaView = media
 card.registerWhenAttached(ad) // sets nativeAd once the card is in a window and laid out
 val height = preferredHeight(card, width = 360.0) // to frame its Compose UIKitView
 ```
