@@ -29,8 +29,9 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
       - uses: gradle/actions/setup-gradle@v6
-      - name: Compile and run the host tests
-        run: ./gradlew :admob:compileAndroidMain :admob:testAndroidHostTest
+      # The device tests need a device: CI only builds them (connectedAndroidDeviceTest runs them, README).
+      - name: Compile, run the host tests, build the device tests
+        run: ./gradlew :admob:compileAndroidMain :admob:testAndroidHostTest :admob:assembleAndroidDeviceTest
       - name: Keep the test reports
         if: failure()
         uses: actions/upload-artifact@v7
